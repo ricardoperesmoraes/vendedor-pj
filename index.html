@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Vendedor PJ · Indexis</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: "Conthrax";
+      src: url("fonts/conthrax-regular.otf") format("opentype");
+      font-weight: 400; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: "Conthrax";
+      src: url("fonts/Conthrax-SemiBold.otf") format("opentype");
+      font-weight: 600; font-style: normal; font-display: swap;
+    }
+    :root {
+      --blue-50: #eef4fe; --blue-100: #d8e6fd; --blue-200: #b4cdfb;
+      --blue-300: #84acf7; --blue-400: #5994f5; --blue-500: #1c72ef;
+      --blue-600: #1c6ce1; --blue-700: #2b4fc6; --blue-800: #243f9e; --blue-900: #232b54;
+      --brand-primary: #1c6ce1; --brand-primary-deep: #2b4fc6; --brand-ink: #232b54;
+      --brand-gradient: linear-gradient(135deg, #5994f5 0%, #1c6ce1 52%, #2b4fc6 100%);
+      --white: #ffffff; --gray-25: #fbfcfe; --gray-50: #f6f8fb; --gray-100: #eef1f6;
+      --gray-150: #e6eaf1; --gray-200: #dde2ec; --gray-300: #c5cdda; --gray-400: #97a2b5;
+      --gray-500: #6b7585; --gray-600: #4d5667; --gray-700: #353d4d;
+      --gray-800: #232b3a; --gray-900: #161b26;
+      --success: #1ca672; --success-bg: #e7f6ef;
+      --warning: #d98a13; --warning-bg: #fbf1df;
+      --danger: #db4333; --danger-bg: #fbe9e7;
+      --bg: var(--white); --bg-subtle: var(--gray-50);
+      --fg1: #232b54; --fg2: var(--gray-600); --fg3: var(--gray-500);
+      --border: var(--gray-200); --border-strong: var(--gray-300);
+      --shadow-sm: 0 1px 3px rgba(35,43,84,0.08), 0 1px 2px rgba(35,43,84,0.04);
+      --shadow-md: 0 4px 14px rgba(35,43,84,0.08), 0 2px 4px rgba(35,43,84,0.04);
+      --shadow-lg: 0 12px 32px rgba(35,43,84,0.10), 0 4px 8px rgba(35,43,84,0.05);
+      --shadow-brand: 0 8px 24px rgba(28,108,225,0.28);
+      --r-sm: 9px; --r-md: 12px; --r-lg: 16px; --r-xl: 22px; --r-2xl: 30px; --r-pill: 999px;
+      --font-display: "Conthrax", -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-sans: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: var(--font-sans); background: var(--bg-subtle); color: var(--fg1); line-height: 1.55; }
+    a { color: inherit; text-decoration: none; }
+
+    .ix-nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .ix-nav-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12.6px 32px;
+    }
+    .ix-logo img { height: 96px; display: block; }
+    .ix-navlinks { display: flex; gap: 32px; font-size: 14px; font-weight: 500; color: var(--fg2); }
+    .ix-navlinks a { transition: color .15s; }
+    .ix-navlinks a:hover { color: var(--brand-primary); }
+    .ix-nav-cta {
+      background: var(--brand-gradient); color: #fff;
+      padding: 9px 20px; border-radius: var(--r-pill);
+      font-size: 13.5px; font-weight: 600;
+      box-shadow: var(--shadow-brand); transition: opacity .15s;
+    }
+    .ix-nav-cta:hover { opacity: .88; }
+
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+
+    /* HERO */
+    .ix-hero { padding: 80px 0 0; position: relative; overflow: hidden; background: var(--white); }
+    .ix-hero::before {
+      content: ""; position: absolute; top: -200px; right: -200px;
+      width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, #5994f5 0%, rgba(91,148,245,0) 70%);
+      opacity: .12; pointer-events: none;
+    }
+    .ix-hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .ix-hero-text { padding-bottom: 64px; }
+    .ix-hero-visual { position: relative; align-self: stretch; display: flex; align-items: flex-end; }
+    .ix-hero-img { width: 100%; height: 460px; object-fit: cover; object-position: center top; border-radius: var(--r-xl) var(--r-xl) 0 0; display: block; box-shadow: var(--shadow-lg); }
+    .ix-eyebrow {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: var(--font-display); font-weight: 600; font-size: 11px;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--brand-primary); background: var(--blue-50);
+      padding: 5px 14px; border-radius: var(--r-pill); margin-bottom: 20px;
+    }
+    .ix-hero h1 {
+      font-family: var(--font-sans); font-size: 46px; font-weight: 700;
+      line-height: 1.1; letter-spacing: -0.02em;
+      max-width: 780px; margin: 0 0 18px; color: var(--fg1);
+    }
+    .ix-hero h1 em {
+      font-style: normal;
+      background: var(--brand-gradient);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .ix-hero p.lead { font-size: 17px; color: var(--fg2); max-width: 560px; margin: 0 0 32px; line-height: 1.65; }
+    .ix-hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .ix-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 24px; border-radius: var(--r-md);
+      font-weight: 600; font-size: 14.5px; cursor: pointer; border: none; transition: all .15s;
+    }
+    .ix-btn-primary { background: var(--brand-gradient); color: #fff; box-shadow: var(--shadow-brand); }
+    .ix-btn-primary:hover { opacity: .88; transform: translateY(-1px); }
+    .ix-btn-ghost { background: var(--white); color: var(--fg1); border: 1.5px solid var(--border); }
+    .ix-btn-ghost:hover { border-color: var(--brand-primary); color: var(--brand-primary); }
+
+    /* NUMBERS STRIP */
+    .ix-numbers { padding: 48px 0; background: var(--brand-ink); }
+    .ix-numbers-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+    .ix-number-item {
+      text-align: center; padding: 24px 20px;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .ix-number-item:last-child { border-right: none; }
+    .ix-number-item .n {
+      font-family: var(--font-sans); font-size: 36px; font-weight: 700;
+      color: #fff; margin-bottom: 6px;
+      background: var(--brand-gradient);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .ix-number-item .l {
+      font-family: var(--font-display); font-size: 10px; font-weight: 600;
+      color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.1em;
+    }
+
+    /* SECTION TITLE */
+    .ix-section-title { text-align: center; max-width: 700px; margin: 0 auto 48px; }
+    .ix-section-title h2 { font-size: 34px; font-weight: 700; letter-spacing: -0.015em; margin: 14px 0 12px; color: var(--fg1); }
+    .ix-section-title p { color: var(--fg2); font-size: 16px; margin: 0; line-height: 1.65; }
+
+    /* BENEFITS */
+    .ix-benefits { padding: 80px 0; background: var(--white); }
+    .ix-benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .ix-benefit-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--r-xl); padding: 32px 28px;
+      box-shadow: var(--shadow-md); transition: box-shadow .2s, transform .2s;
+    }
+    .ix-benefit-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+    .ix-benefit-icon {
+      width: 48px; height: 48px; border-radius: var(--r-lg);
+      background: var(--blue-50); display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+    }
+    .ix-benefit-icon svg { width: 22px; height: 22px; stroke: var(--brand-primary); stroke-width: 1.75; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .ix-benefit-card h3 { font-size: 18px; font-weight: 700; margin: 0 0 10px; color: var(--fg1); }
+    .ix-benefit-card p { font-size: 14.5px; color: var(--fg2); margin: 0; line-height: 1.65; }
+
+    /* OTE MODEL */
+    .ix-ote { padding: 80px 0; background: var(--bg-subtle); }
+    .ix-ote-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .ix-ote-text h2 { font-size: 32px; font-weight: 700; letter-spacing: -0.015em; margin: 14px 0 16px; }
+    .ix-ote-text p { font-size: 15px; color: var(--fg2); line-height: 1.7; margin: 0 0 24px; }
+    .ix-flag {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 12px; font-weight: 700;
+      padding: 3px 10px 3px 6px; border-radius: var(--r-pill); margin-right: 6px;
+    }
+    .ix-flag .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .ix-flag-vermelha { background: var(--danger-bg); color: #b02020; }
+    .ix-flag-vermelha .dot { background: var(--danger); }
+    .ix-flag-amarela { background: var(--warning-bg); color: #8a5c00; }
+    .ix-flag-amarela .dot { background: var(--warning); }
+    .ix-flag-verde { background: var(--success-bg); color: #0d6645; }
+    .ix-flag-verde .dot { background: var(--success); }
+    .ix-flag-cinza { background: var(--gray-100); color: var(--fg3); }
+    .ix-flag-cinza .dot { background: var(--gray-300); }
+    .ix-ote-table {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--r-xl); overflow: hidden; box-shadow: var(--shadow-md);
+    }
+    .ix-ote-table table { width: 100%; border-collapse: collapse; }
+    .ix-ote-table thead th {
+      background: var(--brand-ink); color: #fff;
+      font-family: var(--font-display); font-weight: 600; font-size: 11px;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 14px 18px; text-align: left;
+    }
+    .ix-ote-table tbody td { padding: 14px 18px; font-size: 13.5px; border-bottom: 1px solid var(--border); }
+    .ix-ote-table tbody tr:last-child td { border-bottom: none; }
+    .ix-ote-table tbody tr:nth-child(even) { background: var(--gray-25); }
+    .ix-ote-table td:first-child { color: var(--fg3); font-size: 13px; width: 110px; }
+    .ix-remuner-box {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--r-xl); padding: 32px; margin-top: 24px; box-shadow: var(--shadow-md);
+    }
+    .ix-remuner-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 0; border-bottom: 1px solid var(--border);
+    }
+    .ix-remuner-row:last-child { border-bottom: none; }
+    .ix-remuner-label { font-size: 14px; color: var(--fg2); font-weight: 500; }
+    .ix-remuner-value { font-size: 18px; font-weight: 700; color: var(--fg1); }
+    .ix-remuner-value.accent { color: var(--brand-primary); font-size: 22px; }
+    .ix-remuner-value.total { color: var(--success); font-size: 22px; }
+
+    /* WHAT WE PROVIDE */
+    .ix-provide { padding: 80px 0; background: var(--white); }
+    .ix-provide-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .ix-provide-item {
+      display: flex; gap: 16px; align-items: flex-start;
+      background: var(--bg-subtle); border: 1px solid var(--border);
+      border-radius: var(--r-lg); padding: 22px 24px;
+    }
+    .ix-provide-icon {
+      width: 40px; height: 40px; border-radius: var(--r-md); flex-shrink: 0;
+      background: var(--blue-50); display: flex; align-items: center; justify-content: center;
+    }
+    .ix-provide-icon svg { width: 18px; height: 18px; stroke: var(--brand-primary); stroke-width: 1.75; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .ix-provide-item h4 { font-size: 14.5px; font-weight: 700; margin: 0 0 5px; color: var(--fg1); }
+    .ix-provide-item p { font-size: 13.5px; color: var(--fg2); margin: 0; line-height: 1.55; }
+
+    /* WHAT YOU SELL */
+    .ix-sells { padding: 64px 0; background: var(--bg-subtle); }
+    .ix-sells-label {
+      font-family: var(--font-display); font-size: 11px; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg3); margin: 0 0 24px;
+    }
+    .ix-svc-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+    .ix-svc-card {
+      background: var(--white); border: 1px solid var(--border); border-radius: var(--r-lg);
+      padding: 20px 18px; box-shadow: var(--shadow-sm); transition: box-shadow .2s, transform .2s;
+    }
+    .ix-svc-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .ix-svc-icon {
+      width: 40px; height: 40px; border-radius: var(--r-md); background: var(--blue-50);
+      display: flex; align-items: center; justify-content: center; margin-bottom: 14px;
+    }
+    .ix-svc-icon svg { width: 20px; height: 20px; stroke: var(--brand-primary); stroke-width: 1.75; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .ix-svc-card h4 { font-size: 13.5px; font-weight: 600; margin: 0 0 5px; color: var(--fg1); }
+    .ix-svc-card p { font-size: 12.5px; color: var(--fg2); margin: 0; line-height: 1.5; }
+
+    /* CALCULATOR */
+    .ix-calc { padding: 80px 0 96px; background: var(--brand-ink); position: relative; overflow: hidden; }
+    .ix-calc::before {
+      content: ""; position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
+      width: 800px; height: 800px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(89,148,245,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .ix-calc .ix-section-title h2 { color: #fff; }
+    .ix-calc .ix-section-title p { color: rgba(255,255,255,0.55); }
+    .ix-calc .ix-eyebrow { background: rgba(89,148,245,0.15); color: var(--blue-300); }
+    .ix-calc-box {
+      background: rgba(255,255,255,0.04); backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--r-2xl); padding: 40px;
+    }
+    .ix-calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+    .ix-field { margin-bottom: 28px; }
+    .ix-field label {
+      display: flex; justify-content: space-between; align-items: baseline;
+      font-size: 13.5px; font-weight: 600; color: rgba(255,255,255,0.8); margin-bottom: 10px;
+    }
+    .ix-field label .val {
+      color: var(--blue-300); font-weight: 700; font-size: 14px;
+      background: rgba(89,148,245,0.15); padding: 2px 8px; border-radius: var(--r-sm);
+    }
+    .ix-field input[type=range] { width: 100%; accent-color: #5994f5; height: 5px; cursor: pointer; }
+    .ix-field .hint { font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 8px; line-height: 1.5; }
+    .ix-result-card {
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--r-lg); padding: 24px; margin-bottom: 16px;
+    }
+    .ix-result-row {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 11px 0; border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .ix-result-row:last-child { border-bottom: none; }
+    .ix-result-label { font-size: 13.5px; color: rgba(255,255,255,0.5); font-weight: 500; }
+    .ix-result-value { font-size: 16px; font-weight: 700; color: #fff; }
+    .ix-result-value.big { font-size: 26px; color: #5994f5; }
+    .ix-result-value.green { color: #4cd5a0; }
+    .ix-formula-note {
+      font-size: 12.5px; color: rgba(255,255,255,0.35);
+      background: rgba(255,255,255,0.03); border: 1px dashed rgba(255,255,255,0.1);
+      border-radius: var(--r-md); padding: 16px; margin-top: 8px; line-height: 1.6;
+    }
+    .ix-formula-note strong { color: rgba(255,255,255,0.55); }
+    .ix-progress-block { margin-top: 16px; }
+    .ix-progress-label {
+      font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.4);
+      margin-bottom: 7px; display: flex; justify-content: space-between;
+    }
+    .ix-progress-bar { height: 6px; background: rgba(255,255,255,0.08); border-radius: var(--r-pill); overflow: hidden; }
+    .ix-progress-bar i { display: block; height: 100%; background: var(--brand-gradient); border-radius: var(--r-pill); transition: width .25s ease; }
+
+    /* PROCESS */
+    .ix-process { padding: 80px 0 96px; background: var(--bg-subtle); }
+    .ix-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
+    .ix-steps::before {
+      content: ""; position: absolute; top: 28px; left: calc(12.5% + 20px); right: calc(12.5% + 20px);
+      height: 1px; background: var(--border); z-index: 0;
+    }
+    .ix-step { text-align: center; padding: 0 16px; position: relative; z-index: 1; }
+    .ix-step-num {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--brand-gradient); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 18px; margin: 0 auto 18px;
+      box-shadow: var(--shadow-brand);
+    }
+    .ix-step h4 { font-size: 15px; font-weight: 700; margin: 0 0 8px; }
+    .ix-step p { font-size: 13px; color: var(--fg2); margin: 0; line-height: 1.55; }
+
+    /* FOOTER CTA */
+    .ix-footer-cta {
+      margin: 0 32px 72px; border-radius: var(--r-2xl); overflow: hidden;
+      background: var(--brand-ink); padding: 72px 48px; text-align: center; position: relative;
+    }
+    .ix-footer-cta::before {
+      content: ""; position: absolute; top: -100px; left: 50%; transform: translateX(-50%);
+      width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(89,148,245,0.3) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .ix-footer-cta h2 { font-size: 30px; font-weight: 700; color: #fff; margin: 0 0 14px; position: relative; }
+    .ix-footer-cta p { color: rgba(255,255,255,0.6); max-width: 520px; margin: 0 auto 28px; font-size: 15.5px; line-height: 1.65; position: relative; }
+    .ix-btn-whatsapp {
+      background: #25D366; color: #fff; padding: 14px 28px; border-radius: var(--r-md);
+      font-weight: 700; font-size: 15px; display: inline-flex; align-items: center; gap: 10px;
+      position: relative; transition: all .15s; box-shadow: 0 8px 24px rgba(37,211,102,0.35);
+    }
+    .ix-btn-whatsapp:hover { background: #1ebe5a; transform: translateY(-1px); }
+    .ix-site-footer { text-align: center; padding: 30px 0 56px; color: var(--fg3); font-size: 12.5px; }
+  </style>
+</helmet>
+
+<!-- NAV -->
+<header class="ix-nav">
+  <div class="ix-nav-inner">
+    <a href="#" style="display:flex;align-items:center;">
+      <img src="assets/indexis-logo.png" alt="indexis" style="height:96px;display:block;">
+    </a>
+    <nav class="ix-navlinks">
+      <a href="#modelo">O modelo PJ</a>
+      <a href="#simulador">Simulador OTE</a>
+      <a href="#processo">Como participar</a>
+    </nav>
+
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="ix-hero">
+  <div class="wrap">
+    <div class="ix-hero-inner">
+      <div class="ix-hero-text">
+        <div class="ix-eyebrow">Contrato PJ · Vendedor Indexis</div>
+        <h1>Venda tecnologia de alto valor e tenha uma <em>renda previsível com upside real.</em></h1>
+        <p class="lead">A Indexis contrata vendedores PJ para comercializar todo o ecossistema: plataforma de atendimento e CRM, desenvolvimento de software, licenças, mentorias e implantações. Fixo garantido, variável por performance.</p>
+        <div class="ix-hero-actions">
+          <a class="ix-btn ix-btn-primary" href="#simulador">Simular minha renda</a>
+          <a class="ix-btn ix-btn-ghost" href="#modelo">Como funciona o modelo</a>
+        </div>
+      </div>
+      <div class="ix-hero-visual">
+        <img class="ix-hero-img" src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900&q=80" alt="Jovens profissionais trabalhando juntos em frente ao computador">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<section class="ix-numbers">
+  <div class="wrap">
+    <div class="ix-numbers-grid">
+      <div class="ix-number-item">
+        <div class="n">R$ 2.500</div>
+        <div class="l">Fixo mensal garantido</div>
+      </div>
+      <div class="ix-number-item">
+        <div class="n">+ R$ 3.750</div>
+        <div class="l">Variável no nível 1</div>
+      </div>
+      <div class="ix-number-item">
+        <div class="n">5 produtos</div>
+        <div class="l">Para vender no portfólio</div>
+      </div>
+      <div class="ix-number-item">
+        <div class="n">100%</div>
+        <div class="l">Suporte de pré-venda</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="ix-benefits" id="modelo">
+  <div class="wrap">
+    <div class="ix-section-title">
+      <div class="ix-eyebrow">Por que ser vendedor PJ Indexis</div>
+      <h2>Uma carreira comercial com estrutura e recompensa real</h2>
+      <p>Você vende com o suporte de uma empresa de tecnologia em crescimento, sem abrir mão da liberdade PJ.</p>
+    </div>
+    <div class="ix-benefits-grid">
+
+      <div class="ix-benefit-card">
+        <div class="ix-benefit-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3>Renda previsível todo mês</h3>
+        <p>R$ 2.500 fixo mensais garantidos no contrato PJ, independente do volume de vendas do mês. Você nunca fica no zero.</p>
+      </div>
+
+      <div class="ix-benefit-card">
+        <div class="ix-benefit-icon">
+          <svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+        </div>
+        <h3>Variável que recompensa performance</h3>
+        <p>Modelo OTE com sistema de bandeiras: quanto mais você vende, maior o fator multiplicador. Variável de até R$ 3.750/mês no nível 1.</p>
+      </div>
+
+      <div class="ix-benefit-card">
+        <div class="ix-benefit-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <h3>Liberdade PJ, sem burocracia</h3>
+        <p>Contrato PJ com garantia de remuneração mínima. Você mantém autonomia de horário e rotina sem abrir mão da segurança financeira.</p>
+      </div>
+
+      <div class="ix-benefit-card">
+        <div class="ix-benefit-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Estrutura comercial completa</h3>
+        <p>A Indexis fornece leads qualificados, materiais de venda, suporte de pré-venda e treinamento contínuo para você fechar mais negócios.</p>
+      </div>
+
+      <div class="ix-benefit-card">
+        <div class="ix-benefit-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <h3>Produto de alto valor percebido</h3>
+        <p>Você vende tecnologia que resolve problemas reais de negócio: CRM, automação, IA, e desenvolvimento de software sob medida.</p>
+      </div>
+
+      <div class="ix-benefit-card">
+        <div class="ix-benefit-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h3>Treinamento e onboarding inclusos</h3>
+        <p>Capacitação completa sobre o portfólio Indexis, metodologia de vendas e ferramentas comerciais antes de você começar a vender.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- OTE MODEL DETAIL -->
+<section class="ix-ote">
+  <div class="wrap">
+    <div class="ix-ote-layout">
+      <div class="ix-ote-text">
+        <div class="ix-eyebrow">Como funciona o OTE</div>
+        <h2>Fixo + Variável: a fórmula da sua renda mensal</h2>
+        <p>O modelo OTE (On-Target Earnings) divide sua remuneração em duas partes. O fixo é seu piso garantido. O variável cresce conforme você supera as metas de volume de vendas e quantidade de clientes fechados.</p>
+        <p>Cada critério tem uma tabela de faixas sinalizada por bandeiras. Quanto maior a faixa atingida, maior o fator multiplicador aplicado sobre o teto de R$ 3.750 de variável.</p>
+        <div class="ix-remuner-box">
+          <div class="ix-remuner-row">
+            <span class="ix-remuner-label">Fixo mensal</span>
+            <span class="ix-remuner-value">R$ 2.500</span>
+          </div>
+          <div class="ix-remuner-row">
+            <span class="ix-remuner-label">Variável máximo (nível 1)</span>
+            <span class="ix-remuner-value accent">+ R$ 3.750</span>
+          </div>
+          <div class="ix-remuner-row">
+            <span class="ix-remuner-label">Potencial mensal total</span>
+            <span class="ix-remuner-value total">R$ 6.250</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="ix-ote-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Bandeira</th>
+                <th>Fator</th>
+                <th>Volume de vendas</th>
+                <th>Clientes no mês</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="ix-flag ix-flag-vermelha"><span class="dot"></span>Vermelha</span></td>
+                <td style="font-weight:700;">0,5×</td>
+                <td>A partir de R$ 20k</td>
+                <td>A partir de 5 clientes</td>
+              </tr>
+              <tr>
+                <td><span class="ix-flag ix-flag-amarela"><span class="dot"></span>Amarela</span></td>
+                <td style="font-weight:700;">0,7×</td>
+                <td>A partir de R$ 30k</td>
+                <td>A partir de 7 clientes</td>
+              </tr>
+              <tr>
+                <td><span class="ix-flag ix-flag-verde"><span class="dot"></span>Verde</span></td>
+                <td style="font-weight:700;">1,0×</td>
+                <td>A partir de R$ 40k</td>
+                <td>A partir de 10 clientes</td>
+              </tr>
+              <tr>
+                <td><span class="ix-flag ix-flag-verde"><span class="dot"></span>Verde +</span></td>
+                <td style="font-weight:700;">1,5×</td>
+                <td>A partir de R$ 50k</td>
+                <td>A partir de 12 clientes</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:12px;color:var(--fg3);margin-top:12px;line-height:1.6;">Variável = R$ 3.750 × (50% × fator de volume + 50% × fator de clientes). Cada critério é avaliado de forma independente pela sua respectiva tabela de faixas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIMULATOR -->
+<section class="ix-calc" id="simulador">
+  <div class="wrap">
+    <div class="ix-section-title">
+      <div class="ix-eyebrow">Simulador OTE</div>
+      <h2>Simule sua remuneração mensal</h2>
+      <p>Ajuste os dois critérios e veja em tempo real quanto você receberia neste cenário.</p>
+    </div>
+    <div class="ix-calc-box">
+      <div class="ix-calc-grid">
+        <div>
+          <div class="ix-field">
+            <label>
+              Volume de vendas no mês
+              <span class="val" id="ote-vendas-disp">R$ 33.000</span>
+            </label>
+            <input type="range" id="ote-vendas" min="0" max="70000" step="1000">
+            <div class="hint">Soma de implantações, desenvolvimento, mentorias e consultorias fechadas.</div>
+          </div>
+          <div class="ix-field">
+            <label>
+              Novos clientes fechados no mês
+              <span class="val" id="ote-clientes-disp">10</span>
+            </label>
+            <input type="range" id="ote-clientes" min="0" max="16" step="1">
+            <div class="hint">Total de clientes que assinaram contrato com a Indexis via sua venda.</div>
+          </div>
+          <div class="ix-formula-note">
+            <strong>Fórmula:</strong> variável = R$ 3.750 × (50% × fator de volume + 50% × fator de clientes). Os dois critérios são avaliados independentemente pela tabela de bandeiras acima.
+          </div>
+        </div>
+        <div>
+          <div class="ix-result-card">
+            <div class="ix-result-row">
+              <span class="ix-result-label">Fixo mensal</span>
+              <span class="ix-result-value">R$ 2.500,00</span>
+            </div>
+            <div class="ix-result-row">
+              <span class="ix-result-label">Bandeira de volume</span>
+              <span class="ix-result-value" style="display:flex;align-items:center;gap:8px;">
+                <span id="ote-fator-valor">0,7</span>
+                <span class="ix-flag ix-flag-amarela" id="ote-flag-valor"><span class="dot"></span>Amarela</span>
+              </span>
+            </div>
+            <div class="ix-result-row">
+              <span class="ix-result-label">Bandeira de clientes</span>
+              <span class="ix-result-value" style="display:flex;align-items:center;gap:8px;">
+                <span id="ote-fator-clientes">1,0</span>
+                <span class="ix-flag ix-flag-verde" id="ote-flag-clientes"><span class="dot"></span>Verde</span>
+              </span>
+            </div>
+            <div class="ix-result-row">
+              <span class="ix-result-label">Variável mensal</span>
+              <span class="ix-result-value" id="ote-variavel">R$ 2.062,50</span>
+            </div>
+            <div class="ix-result-row">
+              <span class="ix-result-label">Remuneração total no mês</span>
+              <span class="ix-result-value big" id="ote-total-mes">R$ 4.562,50</span>
+            </div>
+            <div class="ix-result-row">
+              <span class="ix-result-label">Projeção no trimestre</span>
+              <span class="ix-result-value green" id="ote-total-tri">R$ 13.687,50</span>
+            </div>
+          </div>
+          <div class="ix-progress-block">
+            <div class="ix-progress-label">
+              <span>Progresso até o fator máximo (1,5×): volume</span>
+              <span id="ote-prog-valor-txt">66%</span>
+            </div>
+            <div class="ix-progress-bar"><i id="ote-prog-valor" style="width:66%"></i></div>
+          </div>
+          <div class="ix-progress-block" style="margin-top:12px">
+            <div class="ix-progress-label">
+              <span>Progresso até o fator máximo (1,5×): clientes</span>
+              <span id="ote-prog-clientes-txt">83%</span>
+            </div>
+            <div class="ix-progress-bar"><i id="ote-prog-clientes" style="width:83%"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU SELL -->
+<section class="ix-sells">
+  <div class="wrap">
+    <p class="ix-sells-label">O portfólio que você vai vender</p>
+    <div class="ix-svc-grid">
+      <div class="ix-svc-card">
+        <div class="ix-svc-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <h4>Plataforma de atendimento e CRM</h4>
+        <p>Licenciamento da plataforma própria da Indexis.</p>
+      </div>
+      <div class="ix-svc-card">
+        <div class="ix-svc-icon">
+          <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <h4>Desenvolvimento de software</h4>
+        <p>Projetos sob demanda para clientes finais.</p>
+      </div>
+      <div class="ix-svc-card">
+        <div class="ix-svc-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <h4>Licença de outros softwares</h4>
+        <p>Revenda de soluções parceiras do ecossistema.</p>
+      </div>
+      <div class="ix-svc-card">
+        <div class="ix-svc-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h4>Mentorias e consultorias</h4>
+        <p>Serviços especializados de avanço operacional.</p>
+      </div>
+      <div class="ix-svc-card">
+        <div class="ix-svc-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <h4>Implantação de softwares</h4>
+        <p>Onboarding e go-live de plataformas vendidas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT INDEXIS PROVIDES -->
+<section class="ix-provide">
+  <div class="wrap">
+    <div class="ix-section-title">
+      <div class="ix-eyebrow">O que a Indexis oferece</div>
+      <h2>Você vende. Nós damos a estrutura.</h2>
+      <p>Nosso compromisso é que você tenha tudo o que precisa para performar desde o primeiro dia.</p>
+    </div>
+    <div class="ix-provide-grid">
+      <div class="ix-provide-item">
+        <div class="ix-provide-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div>
+          <h4>Leads qualificados</h4>
+          <p>A Indexis alimenta o pipeline com leads gerados por marketing. Você não começa do zero.</p>
+        </div>
+      </div>
+      <div class="ix-provide-item">
+        <div class="ix-provide-icon">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <div>
+          <h4>Materiais e propostas comerciais</h4>
+          <p>Apresentações, decks, propostas padronizadas e argumentários de venda prontos para uso.</p>
+        </div>
+      </div>
+      <div class="ix-provide-item">
+        <div class="ix-provide-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div>
+          <h4>Suporte técnico de pré-venda</h4>
+          <p>Time técnico disponível para reuniões de descoberta, demos e dúvidas do cliente durante o processo.</p>
+        </div>
+      </div>
+      <div class="ix-provide-item">
+        <div class="ix-provide-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div>
+          <h4>Treinamento e onboarding</h4>
+          <p>Capacitação completa sobre o portfólio, metodologia comercial e ferramentas antes de você começar.</p>
+        </div>
+      </div>
+      <div class="ix-provide-item">
+        <div class="ix-provide-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <div>
+          <h4>CRM e ferramentas de vendas</h4>
+          <p>Acesso à plataforma Indexis para gerenciar seu pipeline, follow-ups e histórico de clientes.</p>
+        </div>
+      </div>
+      <div class="ix-provide-item">
+        <div class="ix-provide-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <div>
+          <h4>Pagamento garantido e pontual</h4>
+          <p>Fixo pago todo mês sem atraso. Variável calculado e pago após fechamento do ciclo mensal.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="ix-process" id="processo">
+  <div class="wrap">
+    <div class="ix-section-title">
+      <div class="ix-eyebrow">Processo seletivo</div>
+      <h2>4 passos para começar a vender com a Indexis</h2>
+    </div>
+    <div class="ix-steps">
+      <div class="ix-step">
+        <div class="ix-step-num">1</div>
+        <h4>Conversa inicial</h4>
+        <p>Você entra em contato pelo WhatsApp. Bate-papo rápido para entender seu perfil e experiência comercial.</p>
+      </div>
+      <div class="ix-step">
+        <div class="ix-step-num">2</div>
+        <h4>Entrevista comercial</h4>
+        <p>Reunião com o time Indexis para alinhar expectativas, modelo de trabalho e portfólio que você vai vender.</p>
+      </div>
+      <div class="ix-step">
+        <div class="ix-step-num">3</div>
+        <h4>Treinamento e onboarding</h4>
+        <p>Capacitação sobre produtos, processo de venda, ferramentas e metas do modelo OTE.</p>
+      </div>
+      <div class="ix-step">
+        <div class="ix-step-num">4</div>
+        <h4>Contrato assinado. Vender.</h4>
+        <p>Contrato PJ formalizado, acesso ao CRM liberado e primeiros leads chegando na sua fila.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<footer class="ix-site-footer">
+  © 2026 Indexis. Página de recrutamento de vendedores PJ, uso interno/comercial.
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    function fmtBRL(v) {
+      return v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    }
+
+    function fatorPorFaixas(valor, faixas) {
+      var fator = 0;
+      for (var i = 0; i < faixas.length; i++) {
+        if (valor >= faixas[i].min) fator = faixas[i].fator;
+      }
+      return fator;
+    }
+
+    var FAIXAS_VALOR = [
+      { min: 20000, fator: 0.5 },
+      { min: 30000, fator: 0.7 },
+      { min: 40000, fator: 1.0 },
+      { min: 50000, fator: 1.5 }
+    ];
+    var FAIXAS_CLIENTES = [
+      { min: 5,  fator: 0.5 },
+      { min: 7,  fator: 0.7 },
+      { min: 10, fator: 1.0 },
+      { min: 12, fator: 1.5 }
+    ];
+
+    function bandeiraPorFator(fator) {
+      if (fator >= 1.5) return { cls: 'ix-flag ix-flag-verde', label: 'Verde' };
+      if (fator >= 1.0) return { cls: 'ix-flag ix-flag-verde', label: 'Verde' };
+      if (fator >= 0.7) return { cls: 'ix-flag ix-flag-amarela', label: 'Amarela' };
+      if (fator >= 0.5) return { cls: 'ix-flag ix-flag-vermelha', label: 'Vermelha' };
+      return { cls: 'ix-flag ix-flag-cinza', label: 'Sem bandeira' };
+    }
+
+    function aplicaBandeira(elId, fator) {
+      var el = document.getElementById(elId);
+      if (!el) return;
+      var b = bandeiraPorFator(fator);
+      el.className = b.cls;
+      el.innerHTML = '<span class="dot"></span>' + b.label;
+    }
+
+    window.ixCalcOte = function() {
+      var vendas   = parseInt(document.getElementById('ote-vendas').value, 10);
+      var clientes = parseInt(document.getElementById('ote-clientes').value, 10);
+      document.getElementById('ote-vendas-disp').textContent   = fmtBRL(vendas);
+      document.getElementById('ote-clientes-disp').textContent = clientes;
+
+      var fatorValor    = fatorPorFaixas(vendas, FAIXAS_VALOR);
+      var fatorClientes = fatorPorFaixas(clientes, FAIXAS_CLIENTES);
+      var VARIAVEL_MAX  = 3750;
+      var variavel  = VARIAVEL_MAX * (0.5 * fatorValor + 0.5 * fatorClientes);
+      var totalMes  = 2500 + variavel;
+      var totalTri  = totalMes * 3;
+
+      document.getElementById('ote-fator-valor').textContent    = fatorValor.toFixed(1).replace('.', ',');
+      document.getElementById('ote-fator-clientes').textContent = fatorClientes.toFixed(1).replace('.', ',');
+      aplicaBandeira('ote-flag-valor', fatorValor);
+      aplicaBandeira('ote-flag-clientes', fatorClientes);
+      document.getElementById('ote-variavel').textContent  = fmtBRL(variavel);
+      document.getElementById('ote-total-mes').textContent = fmtBRL(totalMes);
+      document.getElementById('ote-total-tri').textContent = fmtBRL(totalTri);
+
+      var progValor    = Math.min(100, (vendas / 50000) * 100);
+      var progClientes = Math.min(100, (clientes / 12) * 100);
+      document.getElementById('ote-prog-valor').style.width        = progValor + '%';
+      document.getElementById('ote-prog-valor-txt').textContent    = Math.round(progValor) + '%';
+      document.getElementById('ote-prog-clientes').style.width     = progClientes + '%';
+      document.getElementById('ote-prog-clientes-txt').textContent = Math.round(progClientes) + '%';
+    };
+
+    // Valores iniciais
+    document.getElementById('ote-vendas').value   = 33000;
+    document.getElementById('ote-clientes').value = 10;
+
+    window.ixCalcOte();
+
+    document.getElementById('ote-vendas').addEventListener('input', window.ixCalcOte);
+    document.getElementById('ote-clientes').addEventListener('input', window.ixCalcOte);
+  }
+}
+</script>
+</body>
+</html>
