@@ -14,6 +14,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { overflow-x: hidden; max-width: 100%; }
     @font-face {
       font-family: "Conthrax";
       src: url("fonts/conthrax-regular.otf") format("opentype");
@@ -364,7 +366,23 @@
     .ote-sl-foot { display:flex; align-items:center; justify-content:space-between; }
     .ote-sl-logo { font-family:var(--font-display); font-size:12px; font-weight:600; color:rgba(255,255,255,0.3); letter-spacing:0.08em; text-transform:uppercase; }
     .ote-sl-pg   { font-size:12px; color:rgba(255,255,255,0.25); font-family:var(--font-display); letter-spacing:0.06em; }
-    .ote-modal-overlay {
+    .ote-fs-overlay {
+      display:none; position:fixed; inset:0; z-index:300;
+      background:#0a0e1e; overflow-y:auto; -webkit-overflow-scrolling:touch;
+    }
+    .ote-fs-overlay.open { display:block; }
+    .ote-fs-close {
+      position:fixed; top:16px; right:16px; z-index:400;
+      width:44px; height:44px; border-radius:50%; border:none; cursor:pointer;
+      background:rgba(255,255,255,0.2); color:#fff; font-size:20px;
+      display:none; align-items:center; justify-content:center;
+    }
+    .ote-fs-overlay.open ~ .ote-fs-close,
+    .ote-fs-close.visible { display:flex; }
+    .ote-fs-content .ote-slide { min-height:100vh; border-radius:0; }
+    .ote-fs-content .ote-sl-card { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+    @media (min-width:769px) { .ote-fs-overlay { display:none !important; } }
+    @media (max-width:768px) { .ote-carousel-slide { cursor:pointer; } }
       display:none; position:fixed; inset:0; z-index:200;
       background:rgba(10,14,30,0.92); backdrop-filter:blur(8px);
       align-items:center; justify-content:center;
@@ -418,12 +436,14 @@
       .ix-ote { padding: 48px 0; }
       .ix-ote-layout { grid-template-columns: 1fr; gap: 32px; }
       .ix-ote-text h2 { font-size: 24px; }
+      .ix-remuner-box { padding: 20px 16px; }
+      .ix-remuner-row { flex-wrap: wrap; gap: 4px; }
+      .ix-remuner-value { font-size: 15px !important; }
+      .ix-remuner-value.accent, .ix-remuner-value.total { font-size: 18px !important; }
 
       /* Tables - scroll horizontal */
       .ix-ote-table { overflow-x: auto; -webkit-overflow-scrolling: touch; }
       .ix-ote-table table { min-width: 480px; }
-      .ix-remuner-box { padding: 20px 16px; }
-      .ix-remuner-row { flex-wrap: wrap; gap: 4px; }
 
       /* Provide */
       .ix-provide { padding: 48px 0; }
@@ -445,13 +465,15 @@
 
       /* Carousel slides */
       .ote-slide { padding: 20px 16px; }
-      .ote-sl-title { font-size: 24px !important; }
-      .ote-sl-sub { font-size: 13px !important; }
-      .ote-sl-card { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.3) transparent; }
-      .ote-sl-card::-webkit-scrollbar { height: 4px; }
-      .ote-sl-card::-webkit-scrollbar-track { background: transparent; }
-      .ote-sl-card::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 2px; }
-      .ote-sl-card table { min-width: 560px; }
+      .ote-sl-title { font-size: 22px !important; }
+      .ote-sl-sub { font-size: 12px !important; }
+      .ote-sl-card { overflow-x: scroll; -webkit-overflow-scrolling: touch; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.35) transparent; }
+      .ote-sl-card::-webkit-scrollbar { height: 5px; }
+      .ote-sl-card::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 3px; }
+      .ote-sl-card::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.35); border-radius: 3px; }
+      .ote-sl-card table { min-width: 640px; font-size: 13px; }
+      .ote-sl-card thead th { padding: 8px 10px !important; font-size: 10px !important; }
+      .ote-sl-card tbody td { padding: 7px 10px !important; font-size: 13px !important; }
 
       /* Footer CTA */
       .ix-footer-cta { padding: 48px 16px !important; }
@@ -1197,6 +1219,12 @@
 <footer class="ix-site-footer">
   © 2026 Indexis. Página de recrutamento de vendedores PJ, uso interno/comercial.
 </footer>
+
+<!-- Fullscreen slide modal (mobile) -->
+<div class="ote-fs-overlay" id="ote-fs-overlay">
+  <div class="ote-fs-content" id="ote-fs-content"></div>
+</div>
+<button class="ote-fs-close" id="ote-fs-close">&#x2715;</button>
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
@@ -1219,6 +1247,30 @@ class Component extends DCLogic {
     }
 
 dots.forEach(function(d) { d.addEventListener('click', function() { goTo(parseInt(d.dataset.idx)); }); });
+
+    // Tap slide to open fullscreen on mobile
+    var fsOverlay = document.getElementById('ote-fs-overlay');
+    var fsContent = document.getElementById('ote-fs-content');
+    var fsClose   = document.getElementById('ote-fs-close');
+    function closeFsModal() {
+      fsOverlay.classList.remove('open');
+      fsClose.classList.remove('visible');
+      fsContent.innerHTML = '';
+      document.body.style.overflow = '';
+    }
+    fsClose.addEventListener('click', closeFsModal);
+    document.querySelectorAll('.ote-carousel-slide').forEach(function(slide) {
+      slide.addEventListener('click', function() {
+        if (window.innerWidth > 768) return;
+        var inner = slide.querySelector('.ote-slide');
+        if (!inner) return;
+        fsContent.innerHTML = inner.outerHTML;
+        fsOverlay.classList.add('open');
+        fsClose.classList.add('visible');
+        document.body.style.overflow = 'hidden';
+        fsOverlay.scrollTop = 0;
+      });
+    });
 
     // Touch swipe no carrossel
     var touchStartX = 0;
@@ -1256,6 +1308,10 @@ dots.forEach(function(d) { d.addEventListener('click', function() { goTo(parseIn
       }
       input.addEventListener('blur', commitVenda);
       input.addEventListener('keydown', function(e) { if (e.key === 'Enter') input.blur(); });
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && fsOverlay.classList.contains('open')) closeFsModal();
     });
 
     function fmtBRL(v) {
