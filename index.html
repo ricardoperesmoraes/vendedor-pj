@@ -15,7 +15,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; }
-    html, body { overflow-x: hidden; max-width: 100%; }
+    html { overflow-x: hidden; }
+    body { overflow-x: hidden; }
+    .wrap { width: 100%; box-sizing: border-box; }
     @font-face {
       font-family: "Conthrax";
       src: url("fonts/conthrax-regular.otf") format("opentype");
@@ -383,6 +385,7 @@
     .ote-fs-content .ote-sl-card { overflow-x:auto; -webkit-overflow-scrolling:touch; }
     @media (min-width:769px) { .ote-fs-overlay { display:none !important; } }
     @media (max-width:768px) { .ote-carousel-slide { cursor:pointer; } }
+    .ote-modal-overlay {
       display:none; position:fixed; inset:0; z-index:200;
       background:rgba(10,14,30,0.92); backdrop-filter:blur(8px);
       align-items:center; justify-content:center;
@@ -404,6 +407,7 @@
     /* ===================== MOBILE ===================== */
     @media (max-width: 768px) {
       .wrap { padding: 0 16px; }
+      * { min-width: 0; }
 
       /* Nav */
       .ix-nav-inner { padding: 10px 16px; }
@@ -435,13 +439,21 @@
       /* OTE */
       .ix-ote { padding: 48px 0; }
       .ix-ote-layout { grid-template-columns: 1fr; gap: 32px; }
-      .ix-ote-text h2 { font-size: 22px; word-break: break-word; }
-      .ix-remuner-box { padding: 16px; width: 100%; }
-      .ix-remuner-row { gap: 8px; }
-      .ix-remuner-label { font-size: 13px; flex: 1; min-width: 0; }
-      .ix-remuner-value { font-size: 14px !important; text-align: right; white-space: nowrap; }
-      .ix-remuner-value.accent { font-size: 16px !important; }
-      .ix-remuner-value.total  { font-size: 16px !important; }
+      .ix-ote-layout > * { min-width: 0; width: 100%; }
+      .ix-ote-text h2 { font-size: 22px; overflow-wrap: anywhere; word-break: break-word; }
+      .ix-ote-text p { overflow-wrap: break-word; word-break: break-word; }
+      .ix-section-title h2 { overflow-wrap: anywhere; }
+      .ix-hero h1 { overflow-wrap: anywhere; }
+      .ix-ote-table { overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%; min-width: 0; }
+      .ix-ote-table table { min-width: 0; width: 100%; }
+      .ix-ote-table thead th, .ix-ote-table tbody td { padding: 10px 12px; font-size: 13px; }
+      .ix-ote-text .ix-ote-table { overflow: hidden !important; }
+      .ix-remuner-box { padding: 16px; box-sizing: border-box; width: 100%; }
+      .ix-remuner-row { flex-direction: column; align-items: flex-start; gap: 4px; padding: 12px 0; }
+      .ix-remuner-label { font-size: 12px; color: var(--fg3); }
+      .ix-remuner-value { font-size: 20px !important; }
+      .ix-remuner-value.accent { font-size: 22px !important; color: var(--brand-primary); }
+      .ix-remuner-value.total  { font-size: 22px !important; color: var(--success); }
 
       /* Tables - scroll horizontal */
       .ix-ote-table { overflow-x: auto; -webkit-overflow-scrolling: touch; }
@@ -480,6 +492,14 @@
       /* Footer CTA */
       .ix-footer-cta { padding: 48px 16px !important; }
       .ix-footer-cta h2 { font-size: 22px !important; }
+    }
+
+    @media (max-width: 480px) {
+      .wrap { padding: 0 12px; }
+      .ix-hero h1 { font-size: 26px; }
+      .ix-ote-text h2 { font-size: 19px; }
+      .ix-section-title h2 { font-size: 22px; }
+      .ix-benefit-card h3 { font-size: 16px; }
     }
   </style>
 </helmet>
