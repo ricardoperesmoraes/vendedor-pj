@@ -338,6 +338,114 @@
     }
     .ix-btn-whatsapp:hover { background: #1ebe5a; transform: translateY(-1px); }
     .ix-site-footer { text-align: center; padding: 30px 0 56px; color: var(--fg3); font-size: 12.5px; }
+
+    /* OTE SLIDES EMBUTIDOS */
+    .ote-slide { width:100%; min-height:520px; background:#232b54; display:flex; flex-direction:column; padding:28px 24px; gap:16px; }
+    .ote-sl-head { display:flex; flex-direction:column; gap:10px; }
+    .ote-sl-badge { display:inline-flex; align-items:center; gap:8px; padding:6px 16px; border-radius:999px; font-family:var(--font-display); font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; width:fit-content; }
+    .ote-sl-badge .dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+    .ote-sl-title { font-family:var(--font-sans); font-size:44px; font-weight:700; color:#fff; letter-spacing:-0.02em; margin:0; line-height:1.1; }
+    .ote-sl-sub { font-family:var(--font-display); font-size:20px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; margin:0; }
+    .ote-sl-card { flex:1; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:16px; overflow:auto; }
+    .ote-sl-card table { width:100%; height:100%; border-collapse:collapse; }
+    .ote-sl-card thead th { background:rgba(255,255,255,0.07); font-family:var(--font-display); font-size:11px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:rgba(255,255,255,0.5); padding:10px 12px; text-align:left; border-bottom:1px solid rgba(255,255,255,0.08); }
+    .ote-sl-card thead th:first-child { width:100px; text-align:center; }
+    .ote-sl-card thead th:not(:first-child) { text-align:right; }
+    .ote-sl-card tbody tr { border-bottom:1px solid rgba(255,255,255,0.05); }
+    .ote-sl-card tbody tr:last-child { border-bottom:none; }
+    .ote-sl-card tbody tr:nth-child(even) { background:rgba(255,255,255,0.02); }
+    .ote-sl-card tbody td { padding:8px 12px; font-size:15px; color:rgba(255,255,255,0.85); }
+    .ote-sl-card tbody td:first-child { text-align:center; font-family:var(--font-display); font-weight:600; font-size:13px; color:rgba(255,255,255,0.4); letter-spacing:0.06em; }
+    .ote-sl-card tbody td.fixo { text-align:right; color:rgba(255,255,255,0.55); }
+    .ote-sl-card tbody td.var  { text-align:right; font-weight:600; }
+    .ote-sl-card tbody td.tot  { text-align:right; font-weight:700; font-size:20px; }
+    .ote-sl-card tbody td.meta { text-align:right; color:rgba(255,255,255,0.4); font-size:15px; font-style:italic; }
+    .ote-sl-card tbody td.venda { text-align:right; color:rgba(255,255,255,0.65); font-size:14px; }
+    .ote-sl-foot { display:flex; align-items:center; justify-content:space-between; }
+    .ote-modal-overlay {
+      display:none; position:fixed; inset:0; z-index:200;
+      background:rgba(10,14,30,0.92); backdrop-filter:blur(8px);
+      align-items:center; justify-content:center;
+    }
+    .ote-modal-overlay.open { display:flex; }
+    .ote-modal-inner {
+      width:92vw; max-width:1400px; aspect-ratio:16/9;
+      border-radius:var(--r-xl); overflow:hidden; box-shadow:0 32px 80px rgba(0,0,0,0.6);
+      position:relative;
+    }
+    .ote-modal-close {
+      position:absolute; top:16px; right:16px; z-index:10;
+      width:40px; height:40px; border-radius:50%; border:none; cursor:pointer;
+      background:rgba(255,255,255,0.12); color:#fff; font-size:20px;
+      display:flex; align-items:center; justify-content:center;
+      transition:background .15s;
+    }
+    .ote-modal-close:hover { background:rgba(255,255,255,0.22); }
+    /* ===================== MOBILE ===================== */
+    @media (max-width: 768px) {
+      .wrap { padding: 0 16px; }
+
+      /* Nav */
+      .ix-nav-inner { padding: 10px 16px; }
+      .ix-navlinks { display: none; }
+      .ix-logo img { height: 64px; }
+
+      /* Hero */
+      .ix-hero { padding: 48px 0 0; }
+      .ix-hero-inner { grid-template-columns: 1fr; gap: 32px; }
+      .ix-hero h1 { font-size: 30px; }
+      .ix-hero p.lead { font-size: 15px; }
+      .ix-hero-img { height: 260px; }
+      .ix-hero-text { padding-bottom: 0; }
+      .ix-hero-actions { flex-direction: column; }
+      .ix-btn { width: 100%; justify-content: center; }
+
+      /* Numbers */
+      .ix-numbers { padding: 32px 0; }
+      .ix-numbers-grid { grid-template-columns: repeat(2, 1fr); }
+      .ix-number-item:nth-child(2) { border-right: none; }
+      .ix-number-item { border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .ix-number-item:nth-child(3), .ix-number-item:nth-child(4) { border-bottom: none; }
+
+      /* Benefits */
+      .ix-benefits { padding: 48px 0; }
+      .ix-benefits-grid { grid-template-columns: 1fr; }
+      .ix-section-title h2 { font-size: 26px; }
+
+      /* OTE */
+      .ix-ote { padding: 48px 0; }
+      .ix-ote-layout { grid-template-columns: 1fr; gap: 32px; }
+      .ix-ote-text h2 { font-size: 24px; }
+      .ix-ote-table { overflow-x: auto; }
+      .ix-ote-table table { min-width: 480px; }
+      .ix-remuner-box { padding: 20px 16px; }
+
+      /* Provide */
+      .ix-provide { padding: 48px 0; }
+      .ix-provide-grid { grid-template-columns: 1fr; }
+
+      /* Sells */
+      .ix-sells { padding: 48px 0; }
+      .ix-svc-grid { grid-template-columns: repeat(2, 1fr) !important; }
+
+      /* Process */
+      .ix-process { padding: 48px 0; }
+      .ix-steps { grid-template-columns: repeat(2, 1fr) !important; }
+      .ix-steps::before { display: none; }
+
+      /* Calc */
+      .ix-calc { padding: 48px 0; }
+      .ix-calc-grid { grid-template-columns: 1fr !important; }
+
+      /* Carousel slides */
+      .ote-slide { padding: 20px 16px; }
+      .ote-sl-title { font-size: 24px !important; }
+      .ote-sl-sub { font-size: 13px !important; }
+
+      /* Footer CTA */
+      .ix-footer-cta { padding: 48px 16px !important; }
+      .ix-footer-cta h2 { font-size: 22px !important; }
+    }
   </style>
 </helmet>
 
@@ -370,7 +478,7 @@
         </div>
       </div>
       <div class="ix-hero-visual">
-        <img class="ix-hero-img" src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900&q=80" alt="Jovens profissionais trabalhando juntos em frente ao computador">
+        <img class="ix-hero-img" src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=900&q=80" alt="Profissionais analisando dashboard de vendas em monitor"">
       </div>
     </div>
   </div>
@@ -469,8 +577,8 @@
       <div class="ix-ote-text">
         <div class="ix-eyebrow">Como funciona o OTE</div>
         <h2>Fixo + Variável: a fórmula da sua renda mensal</h2>
-        <p>O modelo OTE (On-Target Earnings) divide sua remuneração em duas partes. O fixo é seu piso garantido. O variável cresce conforme você supera as metas de volume de vendas e quantidade de clientes fechados.</p>
-        <p>Cada critério tem uma tabela de faixas sinalizada por bandeiras. Quanto maior a faixa atingida, maior o fator multiplicador aplicado sobre o teto de R$ 3.750 de variável.</p>
+        <p>O modelo OTE (On-Target Earnings) divide sua remuneração em duas partes. O fixo é seu piso garantido. O variável cresce conforme você supera a meta de valor de vendas do mês.</p>
+        <p>A meta tem uma tabela de faixas sinalizada por bandeiras. Quanto maior a faixa atingida, maior o fator multiplicador aplicado sobre o teto de R$ 3.750 de variável.</p>
         <div class="ix-remuner-box">
           <div class="ix-remuner-row">
             <span class="ix-remuner-label">Fixo mensal</span>
@@ -491,43 +599,376 @@
           <table>
             <thead>
               <tr>
-                <th>Bandeira</th>
-                <th>Fator</th>
-                <th>Volume de vendas</th>
-                <th>Clientes no mês</th>
+                <th>% Atingimento da meta</th>
+                <th>Fator multiplicador</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td><span class="ix-flag ix-flag-vermelha"><span class="dot"></span>Vermelha</span></td>
-                <td style="font-weight:700;">0,5×</td>
-                <td>A partir de R$ 20k</td>
-                <td>A partir de 5 clientes</td>
+                <td>Até 69%</td>
+                <td><span class="ix-flag ix-flag-cinza"><span class="dot"></span>0,0× — sem variável</span></td>
               </tr>
               <tr>
-                <td><span class="ix-flag ix-flag-amarela"><span class="dot"></span>Amarela</span></td>
-                <td style="font-weight:700;">0,7×</td>
-                <td>A partir de R$ 30k</td>
-                <td>A partir de 7 clientes</td>
+                <td>70% a 85%</td>
+                <td><span class="ix-flag ix-flag-vermelha"><span class="dot"></span>0,5×</span></td>
               </tr>
               <tr>
-                <td><span class="ix-flag ix-flag-verde"><span class="dot"></span>Verde</span></td>
-                <td style="font-weight:700;">1,0×</td>
-                <td>A partir de R$ 40k</td>
-                <td>A partir de 10 clientes</td>
+                <td>86% a 99%</td>
+                <td><span class="ix-flag ix-flag-amarela"><span class="dot"></span>0,7×</span></td>
               </tr>
               <tr>
-                <td><span class="ix-flag ix-flag-verde"><span class="dot"></span>Verde +</span></td>
-                <td style="font-weight:700;">1,5×</td>
-                <td>A partir de R$ 50k</td>
-                <td>A partir de 12 clientes</td>
+                <td>100% a 119%</td>
+                <td><span class="ix-flag ix-flag-verde"><span class="dot"></span>1,0×</span></td>
+              </tr>
+              <tr>
+                <td>120% ou mais</td>
+                <td><span class="ix-flag ix-flag-verde"><span class="dot"></span>1,5×</span></td>
               </tr>
             </tbody>
           </table>
         </div>
-        <p style="font-size:12px;color:var(--fg3);margin-top:12px;line-height:1.6;">Variável = R$ 3.750 × (50% × fator de volume + 50% × fator de clientes). Cada critério é avaliado de forma independente pela sua respectiva tabela de faixas.</p>
+        <p style="font-size:12px;color:var(--fg3);margin-top:12px;line-height:1.6;"><strong style="color:var(--fg2);">Nível 1 — meta:</strong> Meta de valor = R$ 31.100/mês. Variável = R$ 2.500 × fator (baseado no % de atingimento da meta de valor).</p>
       </div>
     </div>
+
+    <div style="margin-top:56px;">
+      <div class="ix-eyebrow" style="margin-bottom:20px;">Todos os níveis da carreira</div>
+      <div class="ix-ote-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Nível</th>
+              <th>OTE</th>
+              <th>Fixo</th>
+              <th>Variável</th>
+              <th>% Fixo</th>
+              <th>% Variável</th>
+              <th>Meta</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="font-weight:700;color:var(--fg1);">1</td>
+              <td style="font-weight:700;color:var(--success);">R$ 5.000</td>
+              <td>R$ 2.500</td>
+              <td>R$ 2.500</td>
+              <td>50%</td><td>50%</td>
+              <td>R$ 31.100</td>
+            </tr>
+            <tr>
+              <td style="font-weight:700;color:var(--fg1);">2</td>
+              <td style="font-weight:700;color:var(--success);">R$ 5.800</td>
+              <td>R$ 2.900</td>
+              <td>R$ 2.900</td>
+              <td>50%</td><td>50%</td>
+              <td>R$ 37.800</td>
+            </tr>
+            <tr>
+              <td style="font-weight:700;color:var(--fg1);">3</td>
+              <td style="font-weight:700;color:var(--success);">R$ 6.900</td>
+              <td>R$ 3.450</td>
+              <td>R$ 3.450</td>
+              <td>50%</td><td>50%</td>
+              <td>R$ 46.100</td>
+            </tr>
+            <tr>
+              <td style="font-weight:700;color:var(--fg1);">4</td>
+              <td style="font-weight:700;color:var(--success);">R$ 8.300</td>
+              <td>R$ 4.150</td>
+              <td>R$ 4.150</td>
+              <td>50%</td><td>50%</td>
+              <td>R$ 57.200</td>
+            </tr>
+            <tr>
+              <td style="font-weight:700;color:var(--fg1);">5</td>
+              <td style="font-weight:700;color:var(--success);">R$ 10.600</td>
+              <td>R$ 6.360</td>
+              <td>R$ 4.240</td>
+              <td>60%</td><td>40%</td>
+              <td>R$ 75.600</td>
+            </tr>
+            <tr>
+              <td style="font-weight:700;color:var(--fg1);">6</td>
+              <td style="font-weight:700;color:var(--success);">R$ 12.200</td>
+              <td>R$ 7.320</td>
+              <td>R$ 4.880</td>
+              <td>60%</td><td>40%</td>
+              <td>R$ 90.600</td>
+            </tr>
+            <tr>
+              <td style="font-weight:700;color:var(--fg1);">7</td>
+              <td style="font-weight:700;color:var(--success);">R$ 14.400</td>
+              <td>R$ 8.640</td>
+              <td>R$ 5.760</td>
+              <td>60%</td><td>40%</td>
+              <td>R$ 111.100</td>
+            </tr>
+            <tr style="background:var(--blue-50);">
+              <td style="font-weight:700;color:var(--fg1);">8</td>
+              <td style="font-weight:700;color:var(--success);">R$ 20.000</td>
+              <td>R$ 14.000</td>
+              <td>R$ 6.000</td>
+              <td>70%</td><td>30%</td>
+              <td>R$ 158.300</td>
+            </tr>
+            <tr style="background:var(--blue-50);">
+              <td style="font-weight:700;color:var(--fg1);">9</td>
+              <td style="font-weight:700;color:var(--success);">R$ 23.300</td>
+              <td>R$ 16.310</td>
+              <td>R$ 6.990</td>
+              <td>70%</td><td>30%</td>
+              <td>R$ 186.100</td>
+            </tr>
+            <tr style="background:var(--blue-50);">
+              <td style="font-weight:700;color:var(--fg1);">10</td>
+              <td style="font-weight:700;color:var(--success);">R$ 27.800</td>
+              <td>R$ 19.460</td>
+              <td>R$ 8.340</td>
+              <td>70%</td><td>30%</td>
+              <td>R$ 222.200</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:12px;color:var(--fg3);margin-top:12px;line-height:1.6;">Níveis 1–4: cargo Exec. Comercial Jr · Níveis 5–7: Exec. Comercial Pleno/Sênior · Níveis 8–10: Account Manager / Key Account Manager. A progressão de nível é baseada em performance e avaliação periódica.</p>
+    </div>
+
+    <div style="margin-top:56px;">
+      <div class="ix-eyebrow" style="margin-bottom:20px;">Variável recebido por nível e % de atingimento</div>
+      <div class="ix-ote-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Nível</th>
+              <th><span class="ix-flag ix-flag-cinza" style="background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.55);"><span class="dot" style="background:rgba(255,255,255,0.3);"></span>Até 69%</span></th>
+              <th><span class="ix-flag ix-flag-vermelha" style="background:rgba(219,67,51,0.2);color:#ffb3ab;"><span class="dot" style="background:#ff7a6e;"></span>70% a 85%</span></th>
+              <th><span class="ix-flag ix-flag-amarela" style="background:rgba(217,138,19,0.2);color:#ffd080;"><span class="dot" style="background:#ffc040;"></span>86% a 99%</span></th>
+              <th><span class="ix-flag ix-flag-verde" style="background:rgba(28,166,114,0.2);color:#80e8c0;"><span class="dot" style="background:#4cd5a0;"></span>100% a 119%</span></th>
+              <th><span class="ix-flag" style="background:rgba(89,148,245,0.2);color:#a0c8ff;"><span class="dot" style="background:#5994f5;"></span>120%+</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="font-weight:700;color:var(--fg1);">1</td>
+              <td style="color:var(--fg3);">R$ 0</td>
+              <td style="color:var(--danger);">R$ 1.250</td>
+              <td style="color:var(--warning);">R$ 1.750</td>
+              <td style="color:var(--success);font-weight:600;">R$ 2.500</td>
+              <td style="color:var(--brand-primary);font-weight:700;">R$ 3.750</td>
+            </tr>
+            <tr>
+              <td style="font-weight:700;color:var(--fg1);">2</td>
+              <td style="color:var(--fg3);">R$ 0</td>
+              <td style="color:var(--danger);">R$ 1.450</td>
+              <td style="color:var(--warning);">R$ 2.030</td>
+              <td style="color:var(--success);font-weight:600;">R$ 2.900</td>
+              <td style="color:var(--brand-primary);font-weight:700;">R$ 4.350</td>
+            </tr>
+            <tr>
+              <td style="font-weight:700;color:var(--fg1);">3</td>
+              <td style="color:var(--fg3);">R$ 0</td>
+              <td style="color:var(--danger);">R$ 1.725</td>
+              <td style="color:var(--warning);">R$ 2.415</td>
+              <td style="color:var(--success);font-weight:600;">R$ 3.450</td>
+              <td style="color:var(--brand-primary);font-weight:700;">R$ 5.175</td>
+            </tr>
+            <tr>
+              <td style="font-weight:700;color:var(--fg1);">4</td>
+              <td style="color:var(--fg3);">R$ 0</td>
+              <td style="color:var(--danger);">R$ 2.075</td>
+              <td style="color:var(--warning);">R$ 2.905</td>
+              <td style="color:var(--success);font-weight:600;">R$ 4.150</td>
+              <td style="color:var(--brand-primary);font-weight:700;">R$ 6.225</td>
+            </tr>
+            <tr>
+              <td style="font-weight:700;color:var(--fg1);">5</td>
+              <td style="color:var(--fg3);">R$ 0</td>
+              <td style="color:var(--danger);">R$ 2.120</td>
+              <td style="color:var(--warning);">R$ 2.968</td>
+              <td style="color:var(--success);font-weight:600;">R$ 4.240</td>
+              <td style="color:var(--brand-primary);font-weight:700;">R$ 6.360</td>
+            </tr>
+            <tr>
+              <td style="font-weight:700;color:var(--fg1);">6</td>
+              <td style="color:var(--fg3);">R$ 0</td>
+              <td style="color:var(--danger);">R$ 2.440</td>
+              <td style="color:var(--warning);">R$ 3.416</td>
+              <td style="color:var(--success);font-weight:600;">R$ 4.880</td>
+              <td style="color:var(--brand-primary);font-weight:700;">R$ 7.320</td>
+            </tr>
+            <tr>
+              <td style="font-weight:700;color:var(--fg1);">7</td>
+              <td style="color:var(--fg3);">R$ 0</td>
+              <td style="color:var(--danger);">R$ 2.880</td>
+              <td style="color:var(--warning);">R$ 4.032</td>
+              <td style="color:var(--success);font-weight:600;">R$ 5.760</td>
+              <td style="color:var(--brand-primary);font-weight:700;">R$ 8.640</td>
+            </tr>
+            <tr style="background:var(--blue-50);">
+              <td style="font-weight:700;color:var(--fg1);">8</td>
+              <td style="color:var(--fg3);">R$ 0</td>
+              <td style="color:var(--danger);">R$ 3.000</td>
+              <td style="color:var(--warning);">R$ 4.200</td>
+              <td style="color:var(--success);font-weight:600;">R$ 6.000</td>
+              <td style="color:var(--brand-primary);font-weight:700;">R$ 9.000</td>
+            </tr>
+            <tr style="background:var(--blue-50);">
+              <td style="font-weight:700;color:var(--fg1);">9</td>
+              <td style="color:var(--fg3);">R$ 0</td>
+              <td style="color:var(--danger);">R$ 3.495</td>
+              <td style="color:var(--warning);">R$ 4.893</td>
+              <td style="color:var(--success);font-weight:600;">R$ 6.990</td>
+              <td style="color:var(--brand-primary);font-weight:700;">R$ 10.485</td>
+            </tr>
+            <tr style="background:var(--blue-50);">
+              <td style="font-weight:700;color:var(--fg1);">10</td>
+              <td style="color:var(--fg3);">R$ 0</td>
+              <td style="color:var(--danger);">R$ 4.170</td>
+              <td style="color:var(--warning);">R$ 5.838</td>
+              <td style="color:var(--success);font-weight:600;">R$ 8.340</td>
+              <td style="color:var(--brand-primary);font-weight:700;">R$ 12.510</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:12px;color:var(--fg3);margin-top:12px;line-height:1.6;">Valores = variável máximo do nível × fator. Atingimento abaixo de 70% = variável zero. Coluna 120%+: fator 1,5× sobre o variável máximo.</p>
+    </div>
+
+    <div style="margin-top:56px;">
+      <div class="ix-eyebrow" style="margin-bottom:20px;">Detalhamento por faixa de atingimento</div>
+      <div>
+        <div style="position:relative;overflow:hidden;border-radius:20px;">
+          
+          <div id="ote-carousel" style="display:flex;">
+        <div class="ote-carousel-slide" style="min-width:100%;flex-shrink:0;"><div style="border-radius:20px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.35);"><div class="ote-slide" style="background:#2a2f3e;position:relative;">
+              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;overflow:hidden;"><span style="font-size:520px;font-weight:900;color:rgba(255,255,255,0.04);line-height:1;user-select:none;">69%</span></div>
+              <div class="ote-sl-head">
+                <span class="ote-sl-badge" style="background:rgba(151,162,181,0.12);color:#97a2b5;"><span class="dot" style="background:#97a2b5;"></span>Atingimento até 69%</span>
+                <h2 class="ote-sl-title">Remuneração por nível</h2>
+                <p class="ote-sl-sub" style="color:#97a2b5;">Fator 0,0× — sem variável</p>
+              </div>
+              <div class="ote-sl-card"><table>
+                <thead><tr><th>Nível</th><th>Meta de valor</th><th>Venda realizada</th><th>Fixo</th><th>Variável</th><th>Total recebido</th></tr></thead>
+                <tbody>
+                  <tr><td>01</td><td class="meta">R$ 31.100</td><td class="venda">Até R$ 21.769</td><td class="fixo">R$ 2.500</td><td class="var" style="color:#97a2b5;">R$ 0</td><td class="tot" style="color:rgba(255,255,255,0.45);">R$ 2.500</td></tr>
+                  <tr><td>02</td><td class="meta">R$ 37.800</td><td class="venda">Até R$ 26.459</td><td class="fixo">R$ 2.900</td><td class="var" style="color:#97a2b5;">R$ 0</td><td class="tot" style="color:rgba(255,255,255,0.45);">R$ 2.900</td></tr>
+                  <tr><td>03</td><td class="meta">R$ 46.100</td><td class="venda">Até R$ 32.268</td><td class="fixo">R$ 3.450</td><td class="var" style="color:#97a2b5;">R$ 0</td><td class="tot" style="color:rgba(255,255,255,0.45);">R$ 3.450</td></tr>
+                  <tr><td>04</td><td class="meta">R$ 57.200</td><td class="venda">Até R$ 40.039</td><td class="fixo">R$ 4.150</td><td class="var" style="color:#97a2b5;">R$ 0</td><td class="tot" style="color:rgba(255,255,255,0.45);">R$ 4.150</td></tr>
+                  <tr><td>05</td><td class="meta">R$ 75.600</td><td class="venda">Até R$ 52.919</td><td class="fixo">R$ 6.360</td><td class="var" style="color:#97a2b5;">R$ 0</td><td class="tot" style="color:rgba(255,255,255,0.45);">R$ 6.360</td></tr>
+                  <tr><td>06</td><td class="meta">R$ 90.600</td><td class="venda">Até R$ 63.418</td><td class="fixo">R$ 7.320</td><td class="var" style="color:#97a2b5;">R$ 0</td><td class="tot" style="color:rgba(255,255,255,0.45);">R$ 7.320</td></tr>
+                  <tr><td>07</td><td class="meta">R$ 111.100</td><td class="venda">Até R$ 77.769</td><td class="fixo">R$ 8.640</td><td class="var" style="color:#97a2b5;">R$ 0</td><td class="tot" style="color:rgba(255,255,255,0.45);">R$ 8.640</td></tr>
+                  <tr><td>08</td><td class="meta">R$ 158.300</td><td class="venda">Até R$ 110.809</td><td class="fixo">R$ 14.000</td><td class="var" style="color:#97a2b5;">R$ 0</td><td class="tot" style="color:rgba(255,255,255,0.45);">R$ 14.000</td></tr>
+                  <tr><td>09</td><td class="meta">R$ 186.100</td><td class="venda">Até R$ 130.268</td><td class="fixo">R$ 16.310</td><td class="var" style="color:#97a2b5;">R$ 0</td><td class="tot" style="color:rgba(255,255,255,0.45);">R$ 16.310</td></tr>
+                  <tr><td>10</td><td class="meta">R$ 222.200</td><td class="venda">Até R$ 155.539</td><td class="fixo">R$ 19.460</td><td class="var" style="color:#97a2b5;">R$ 0</td><td class="tot" style="color:rgba(255,255,255,0.45);">R$ 19.460</td></tr>
+                </tbody>
+              </table></div>
+              <div class="ote-sl-foot"><span class="ote-sl-logo">Indexis · Vendedor PJ</span><span class="ote-sl-pg">01 / 05</span></div>
+            </div></div></div>
+        <div class="ote-carousel-slide" style="min-width:100%;flex-shrink:0;"><div style="border-radius:20px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.35);"><div class="ote-slide" style="background:#3d1414;position:relative;">
+              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;overflow:hidden;"><span style="font-size:520px;font-weight:900;color:rgba(255,255,255,0.04);line-height:1;user-select:none;">85%</span></div>
+              <div class="ote-sl-head">
+                <span class="ote-sl-badge" style="background:rgba(219,67,51,0.15);color:#e8614f;"><span class="dot" style="background:#e8614f;"></span>Atingimento 70% a 85%</span>
+                <h2 class="ote-sl-title">Remuneração por nível</h2>
+                <p class="ote-sl-sub" style="color:#e8614f;">Fator 0,5× sobre o variável máximo</p>
+              </div>
+              <div class="ote-sl-card"><table>
+                <thead><tr><th>Nível</th><th>Meta de valor</th><th>Venda realizada</th><th>Fixo</th><th>Variável</th><th>Total recebido</th></tr></thead>
+                <tbody>
+                  <tr><td>01</td><td class="meta">R$ 31.100</td><td class="venda">R$ 21.770 – R$ 26.745</td><td class="fixo">R$ 2.500</td><td class="var" style="color:#e8614f;">R$ 1.250</td><td class="tot" style="color:#fff;">R$ 3.750</td></tr>
+                  <tr><td>02</td><td class="meta">R$ 37.800</td><td class="venda">R$ 26.460 – R$ 32.507</td><td class="fixo">R$ 2.900</td><td class="var" style="color:#e8614f;">R$ 1.450</td><td class="tot" style="color:#fff;">R$ 4.350</td></tr>
+                  <tr><td>03</td><td class="meta">R$ 46.100</td><td class="venda">R$ 32.270 – R$ 39.645</td><td class="fixo">R$ 3.450</td><td class="var" style="color:#e8614f;">R$ 1.725</td><td class="tot" style="color:#fff;">R$ 5.175</td></tr>
+                  <tr><td>04</td><td class="meta">R$ 57.200</td><td class="venda">R$ 40.040 – R$ 49.191</td><td class="fixo">R$ 4.150</td><td class="var" style="color:#e8614f;">R$ 2.075</td><td class="tot" style="color:#fff;">R$ 6.225</td></tr>
+                  <tr><td>05</td><td class="meta">R$ 75.600</td><td class="venda">R$ 52.920 – R$ 65.015</td><td class="fixo">R$ 6.360</td><td class="var" style="color:#e8614f;">R$ 2.120</td><td class="tot" style="color:#fff;">R$ 8.480</td></tr>
+                  <tr><td>06</td><td class="meta">R$ 90.600</td><td class="venda">R$ 63.420 – R$ 77.915</td><td class="fixo">R$ 7.320</td><td class="var" style="color:#e8614f;">R$ 2.440</td><td class="tot" style="color:#fff;">R$ 9.760</td></tr>
+                  <tr><td>07</td><td class="meta">R$ 111.100</td><td class="venda">R$ 77.770 – R$ 95.545</td><td class="fixo">R$ 8.640</td><td class="var" style="color:#e8614f;">R$ 2.880</td><td class="tot" style="color:#fff;">R$ 11.520</td></tr>
+                  <tr><td>08</td><td class="meta">R$ 158.300</td><td class="venda">R$ 110.810 – R$ 136.137</td><td class="fixo">R$ 14.000</td><td class="var" style="color:#e8614f;">R$ 3.000</td><td class="tot" style="color:#fff;">R$ 17.000</td></tr>
+                  <tr><td>09</td><td class="meta">R$ 186.100</td><td class="venda">R$ 130.270 – R$ 160.045</td><td class="fixo">R$ 16.310</td><td class="var" style="color:#e8614f;">R$ 3.495</td><td class="tot" style="color:#fff;">R$ 19.805</td></tr>
+                  <tr><td>10</td><td class="meta">R$ 222.200</td><td class="venda">R$ 155.540 – R$ 191.091</td><td class="fixo">R$ 19.460</td><td class="var" style="color:#e8614f;">R$ 4.170</td><td class="tot" style="color:#fff;">R$ 23.630</td></tr>
+                </tbody>
+              </table></div>
+              <div class="ote-sl-foot"><span class="ote-sl-logo">Indexis · Vendedor PJ</span><span class="ote-sl-pg">02 / 05</span></div>
+            </div></div></div>
+        <div class="ote-carousel-slide" style="min-width:100%;flex-shrink:0;"><div style="border-radius:20px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.35);"><div class="ote-slide" style="background:#352b00;position:relative;">
+              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;overflow:hidden;"><span style="font-size:520px;font-weight:900;color:rgba(255,255,255,0.04);line-height:1;user-select:none;">99%</span></div>
+              <div class="ote-sl-head">
+                <span class="ote-sl-badge" style="background:rgba(217,138,19,0.15);color:#e09b20;"><span class="dot" style="background:#e09b20;"></span>Atingimento 86% a 99%</span>
+                <h2 class="ote-sl-title">Remuneração por nível</h2>
+                <p class="ote-sl-sub" style="color:#e09b20;">Fator 0,7× sobre o variável máximo</p>
+              </div>
+              <div class="ote-sl-card"><table>
+                <thead><tr><th>Nível</th><th>Meta de valor</th><th>Venda realizada</th><th>Fixo</th><th>Variável</th><th>Total recebido</th></tr></thead>
+                <tbody>
+                  <tr><td>01</td><td class="meta">R$ 31.100</td><td class="venda">R$ 26.746 – R$ 31.099</td><td class="fixo">R$ 2.500</td><td class="var" style="color:#e09b20;">R$ 1.750</td><td class="tot" style="color:#fff;">R$ 4.250</td></tr>
+                  <tr><td>02</td><td class="meta">R$ 37.800</td><td class="venda">R$ 32.508 – R$ 37.799</td><td class="fixo">R$ 2.900</td><td class="var" style="color:#e09b20;">R$ 2.030</td><td class="tot" style="color:#fff;">R$ 4.930</td></tr>
+                  <tr><td>03</td><td class="meta">R$ 46.100</td><td class="venda">R$ 39.646 – R$ 46.099</td><td class="fixo">R$ 3.450</td><td class="var" style="color:#e09b20;">R$ 2.415</td><td class="tot" style="color:#fff;">R$ 5.865</td></tr>
+                  <tr><td>04</td><td class="meta">R$ 57.200</td><td class="venda">R$ 49.192 – R$ 57.199</td><td class="fixo">R$ 4.150</td><td class="var" style="color:#e09b20;">R$ 2.905</td><td class="tot" style="color:#fff;">R$ 7.055</td></tr>
+                  <tr><td>05</td><td class="meta">R$ 75.600</td><td class="venda">R$ 65.016 – R$ 75.599</td><td class="fixo">R$ 6.360</td><td class="var" style="color:#e09b20;">R$ 2.968</td><td class="tot" style="color:#fff;">R$ 9.328</td></tr>
+                  <tr><td>06</td><td class="meta">R$ 90.600</td><td class="venda">R$ 77.916 – R$ 90.599</td><td class="fixo">R$ 7.320</td><td class="var" style="color:#e09b20;">R$ 3.416</td><td class="tot" style="color:#fff;">R$ 10.736</td></tr>
+                  <tr><td>07</td><td class="meta">R$ 111.100</td><td class="venda">R$ 95.546 – R$ 111.099</td><td class="fixo">R$ 8.640</td><td class="var" style="color:#e09b20;">R$ 4.032</td><td class="tot" style="color:#fff;">R$ 12.672</td></tr>
+                  <tr><td>08</td><td class="meta">R$ 158.300</td><td class="venda">R$ 136.138 – R$ 158.299</td><td class="fixo">R$ 14.000</td><td class="var" style="color:#e09b20;">R$ 4.200</td><td class="tot" style="color:#fff;">R$ 18.200</td></tr>
+                  <tr><td>09</td><td class="meta">R$ 186.100</td><td class="venda">R$ 160.046 – R$ 186.099</td><td class="fixo">R$ 16.310</td><td class="var" style="color:#e09b20;">R$ 4.893</td><td class="tot" style="color:#fff;">R$ 21.203</td></tr>
+                  <tr><td>10</td><td class="meta">R$ 222.200</td><td class="venda">R$ 191.092 – R$ 222.199</td><td class="fixo">R$ 19.460</td><td class="var" style="color:#e09b20;">R$ 5.838</td><td class="tot" style="color:#fff;">R$ 25.298</td></tr>
+                </tbody>
+              </table></div>
+              <div class="ote-sl-foot"><span class="ote-sl-logo">Indexis · Vendedor PJ</span><span class="ote-sl-pg">03 / 05</span></div>
+            </div></div></div>
+        <div class="ote-carousel-slide" style="min-width:100%;flex-shrink:0;"><div style="border-radius:20px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.35);"><div class="ote-slide" style="background:#0c3320;position:relative;">
+              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;overflow:hidden;"><span style="font-size:440px;font-weight:900;color:rgba(255,255,255,0.04);line-height:1;user-select:none;">100%</span></div>
+              <div class="ote-sl-head">
+                <span class="ote-sl-badge" style="background:rgba(28,166,114,0.15);color:#1fba7f;"><span class="dot" style="background:#1fba7f;"></span>Atingimento 100% a 119%</span>
+                <h2 class="ote-sl-title">Remuneração por nível</h2>
+                <p class="ote-sl-sub" style="color:#1fba7f;">Fator 1,0× — OTE completo</p>
+              </div>
+              <div class="ote-sl-card"><table>
+                <thead><tr><th>Nível</th><th>Meta de valor</th><th>Venda realizada</th><th>Fixo</th><th>Variável</th><th>Total recebido</th></tr></thead>
+                <tbody>
+                  <tr><td>01</td><td class="meta">R$ 31.100</td><td class="venda">R$ 31.100 – R$ 37.319</td><td class="fixo">R$ 2.500</td><td class="var" style="color:#1fba7f;">R$ 2.500</td><td class="tot" style="color:#1fba7f;">R$ 5.000</td></tr>
+                  <tr><td>02</td><td class="meta">R$ 37.800</td><td class="venda">R$ 37.800 – R$ 45.359</td><td class="fixo">R$ 2.900</td><td class="var" style="color:#1fba7f;">R$ 2.900</td><td class="tot" style="color:#1fba7f;">R$ 5.800</td></tr>
+                  <tr><td>03</td><td class="meta">R$ 46.100</td><td class="venda">R$ 46.100 – R$ 55.319</td><td class="fixo">R$ 3.450</td><td class="var" style="color:#1fba7f;">R$ 3.450</td><td class="tot" style="color:#1fba7f;">R$ 6.900</td></tr>
+                  <tr><td>04</td><td class="meta">R$ 57.200</td><td class="venda">R$ 57.200 – R$ 68.639</td><td class="fixo">R$ 4.150</td><td class="var" style="color:#1fba7f;">R$ 4.150</td><td class="tot" style="color:#1fba7f;">R$ 8.300</td></tr>
+                  <tr><td>05</td><td class="meta">R$ 75.600</td><td class="venda">R$ 75.600 – R$ 90.719</td><td class="fixo">R$ 6.360</td><td class="var" style="color:#1fba7f;">R$ 4.240</td><td class="tot" style="color:#1fba7f;">R$ 10.600</td></tr>
+                  <tr><td>06</td><td class="meta">R$ 90.600</td><td class="venda">R$ 90.600 – R$ 108.719</td><td class="fixo">R$ 7.320</td><td class="var" style="color:#1fba7f;">R$ 4.880</td><td class="tot" style="color:#1fba7f;">R$ 12.200</td></tr>
+                  <tr><td>07</td><td class="meta">R$ 111.100</td><td class="venda">R$ 111.100 – R$ 133.319</td><td class="fixo">R$ 8.640</td><td class="var" style="color:#1fba7f;">R$ 5.760</td><td class="tot" style="color:#1fba7f;">R$ 14.400</td></tr>
+                  <tr><td>08</td><td class="meta">R$ 158.300</td><td class="venda">R$ 158.300 – R$ 189.959</td><td class="fixo">R$ 14.000</td><td class="var" style="color:#1fba7f;">R$ 6.000</td><td class="tot" style="color:#1fba7f;">R$ 20.000</td></tr>
+                  <tr><td>09</td><td class="meta">R$ 186.100</td><td class="venda">R$ 186.100 – R$ 223.319</td><td class="fixo">R$ 16.310</td><td class="var" style="color:#1fba7f;">R$ 6.990</td><td class="tot" style="color:#1fba7f;">R$ 23.300</td></tr>
+                  <tr><td>10</td><td class="meta">R$ 222.200</td><td class="venda">R$ 222.200 – R$ 266.639</td><td class="fixo">R$ 19.460</td><td class="var" style="color:#1fba7f;">R$ 8.340</td><td class="tot" style="color:#1fba7f;">R$ 27.800</td></tr>
+                </tbody>
+              </table></div>
+              <div class="ote-sl-foot"><span class="ote-sl-logo">Indexis · Vendedor PJ</span><span class="ote-sl-pg">04 / 05</span></div>
+            </div></div></div>
+        <div class="ote-carousel-slide" style="min-width:100%;flex-shrink:0;"><div style="border-radius:20px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.35);"><div class="ote-slide" style="background:#0b1e42;position:relative;">
+              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;overflow:hidden;"><span style="font-size:520px;font-weight:900;color:rgba(255,255,255,0.04);line-height:1;user-select:none;">120%</span></div>
+              <div class="ote-sl-head">
+                <span class="ote-sl-badge" style="background:rgba(89,148,245,0.15);color:#5994f5;"><span class="dot" style="background:#5994f5;"></span>Atingimento 120% ou mais</span>
+                <h2 class="ote-sl-title">Remuneração por nível</h2>
+                <p class="ote-sl-sub" style="color:#5994f5;">Fator 1,5× — acelerador de performance</p>
+              </div>
+              <div class="ote-sl-card"><table>
+                <thead><tr><th>Nível</th><th>Meta de valor</th><th>Venda realizada</th><th>Fixo</th><th>Variável</th><th>Total recebido</th></tr></thead>
+                <tbody>
+                  <tr><td>01</td><td class="meta">R$ 31.100</td><td class="venda">Acima de R$ 37.320</td><td class="fixo">R$ 2.500</td><td class="var" style="color:#5994f5;">R$ 3.750</td><td class="tot" style="color:#5994f5;">R$ 6.250</td></tr>
+                  <tr><td>02</td><td class="meta">R$ 37.800</td><td class="venda">Acima de R$ 45.360</td><td class="fixo">R$ 2.900</td><td class="var" style="color:#5994f5;">R$ 4.350</td><td class="tot" style="color:#5994f5;">R$ 7.250</td></tr>
+                  <tr><td>03</td><td class="meta">R$ 46.100</td><td class="venda">Acima de R$ 55.320</td><td class="fixo">R$ 3.450</td><td class="var" style="color:#5994f5;">R$ 5.175</td><td class="tot" style="color:#5994f5;">R$ 8.625</td></tr>
+                  <tr><td>04</td><td class="meta">R$ 57.200</td><td class="venda">Acima de R$ 68.640</td><td class="fixo">R$ 4.150</td><td class="var" style="color:#5994f5;">R$ 6.225</td><td class="tot" style="color:#5994f5;">R$ 10.375</td></tr>
+                  <tr><td>05</td><td class="meta">R$ 75.600</td><td class="venda">Acima de R$ 90.720</td><td class="fixo">R$ 6.360</td><td class="var" style="color:#5994f5;">R$ 6.360</td><td class="tot" style="color:#5994f5;">R$ 12.720</td></tr>
+                  <tr><td>06</td><td class="meta">R$ 90.600</td><td class="venda">Acima de R$ 108.720</td><td class="fixo">R$ 7.320</td><td class="var" style="color:#5994f5;">R$ 7.320</td><td class="tot" style="color:#5994f5;">R$ 14.640</td></tr>
+                  <tr><td>07</td><td class="meta">R$ 111.100</td><td class="venda">Acima de R$ 133.320</td><td class="fixo">R$ 8.640</td><td class="var" style="color:#5994f5;">R$ 8.640</td><td class="tot" style="color:#5994f5;">R$ 17.280</td></tr>
+                  <tr><td>08</td><td class="meta">R$ 158.300</td><td class="venda">Acima de R$ 189.960</td><td class="fixo">R$ 14.000</td><td class="var" style="color:#5994f5;">R$ 9.000</td><td class="tot" style="color:#5994f5;">R$ 23.000</td></tr>
+                  <tr><td>09</td><td class="meta">R$ 186.100</td><td class="venda">Acima de R$ 223.320</td><td class="fixo">R$ 16.310</td><td class="var" style="color:#5994f5;">R$ 10.485</td><td class="tot" style="color:#5994f5;">R$ 26.795</td></tr>
+                  <tr><td>10</td><td class="meta">R$ 222.200</td><td class="venda">Acima de R$ 266.640</td><td class="fixo">R$ 19.460</td><td class="var" style="color:#5994f5;">R$ 12.510</td><td class="tot" style="color:#5994f5;">R$ 31.970</td></tr>
+                </tbody>
+              </table></div>
+              <div class="ote-sl-foot"><span class="ote-sl-logo">Indexis · Vendedor PJ</span><span class="ote-sl-pg">05 / 05</span></div>
+            </div></div></div>
+        </div>
+        </div>
+
+        </div>
+        <div style="display:flex;justify-content:center;gap:12px;margin-top:20px;padding:8px 0;"><button class="ote-dot" data-idx="0" style="width:14px;height:14px;border-radius:50%;border:none;cursor:pointer;padding:0;transition:all .2s;background:#97a2b5;" title="Até 69%"></button><button class="ote-dot" data-idx="1" style="width:14px;height:14px;border-radius:50%;border:none;cursor:pointer;padding:0;transition:all .2s;background:#b0b8cc;" title="70% a 85%"></button><button class="ote-dot" data-idx="2" style="width:14px;height:14px;border-radius:50%;border:none;cursor:pointer;padding:0;transition:all .2s;background:#b0b8cc;" title="86% a 99%"></button><button class="ote-dot" data-idx="3" style="width:14px;height:14px;border-radius:50%;border:none;cursor:pointer;padding:0;transition:all .2s;background:#b0b8cc;" title="100% a 119%"></button><button class="ote-dot" data-idx="4" style="width:14px;height:14px;border-radius:50%;border:none;cursor:pointer;padding:0;transition:all .2s;background:#b0b8cc;" title="120%+"></button></div>
+      </div>
+
+  </div>
+
   </div>
 </section>
 
@@ -537,77 +978,59 @@
     <div class="ix-section-title">
       <div class="ix-eyebrow">Simulador OTE</div>
       <h2>Simule sua remuneração mensal</h2>
-      <p>Ajuste os dois critérios e veja em tempo real quanto você receberia neste cenário.</p>
+      <p>Ajuste o valor de vendas e veja em tempo real quanto você receberia neste cenário.</p>
     </div>
     <div class="ix-calc-box">
       <div class="ix-calc-grid">
         <div>
           <div class="ix-field">
             <label>
-              Volume de vendas no mês
-              <span class="val" id="ote-vendas-disp">R$ 33.000</span>
+              Meta — valor de vendas no mês
+              <span style="font-size:11px;font-weight:500;opacity:.6;">meta 100% = <span id="ote-meta-disp">R$ 31.100</span></span>
+              <span class="val" id="ote-vendas-disp" title="Clique para editar" style="cursor:pointer;">R$ 27.850</span>
             </label>
-            <input type="range" id="ote-vendas" min="0" max="70000" step="1000">
-            <div class="hint">Soma de implantações, desenvolvimento, mentorias e consultorias fechadas.</div>
-          </div>
-          <div class="ix-field">
-            <label>
-              Novos clientes fechados no mês
-              <span class="val" id="ote-clientes-disp">10</span>
-            </label>
-            <input type="range" id="ote-clientes" min="0" max="16" step="1">
-            <div class="hint">Total de clientes que assinaram contrato com a Indexis via sua venda.</div>
+            <input type="range" id="ote-vendas" min="0" max="70000" step="1" list="ote-vendas-snaps">
+            <datalist id="ote-vendas-snaps">
+              <option value="21769"></option>
+              <option value="21770"></option>
+              <option value="26745"></option>
+              <option value="26746"></option>
+              <option value="31099"></option>
+              <option value="31100"></option>
+              <option value="37319"></option>
+              <option value="37320"></option>
+            </datalist>
+            <div class="hint" id="ote-meta-hint">Soma de implantações, desenvolvimento, mentorias e consultorias. Meta 100% = R$ 31.100. Atingimento de 120% = R$ 37.320.</div>
           </div>
           <div class="ix-formula-note">
-            <strong>Fórmula:</strong> variável = R$ 3.750 × (50% × fator de volume + 50% × fator de clientes). Os dois critérios são avaliados independentemente pela tabela de bandeiras acima.
+            <strong>Fórmula:</strong> remuneração = fixo (R$ 2.500) + OTE variável × fator + 2% sobre vendas acima de 120% da meta. O fator é determinado pelo % de atingimento da meta: até 69% = 0 (sem pagamento) · 70–85% = 0,5 · 86–99% = 0,7 · 100–119% = 1,0 · 120%+ = 1,5.
           </div>
         </div>
         <div>
           <div class="ix-result-card">
             <div class="ix-result-row">
-              <span class="ix-result-label">Fixo mensal</span>
-              <span class="ix-result-value">R$ 2.500,00</span>
-            </div>
-            <div class="ix-result-row">
-              <span class="ix-result-label">Bandeira de volume</span>
+              <span class="ix-result-label">Atingimento da meta (valor)</span>
               <span class="ix-result-value" style="display:flex;align-items:center;gap:8px;">
-                <span id="ote-fator-valor">0,7</span>
-                <span class="ix-flag ix-flag-amarela" id="ote-flag-valor"><span class="dot"></span>Amarela</span>
+                <span id="ote-pct-valor">85%</span>
+                <span class="ix-flag ix-flag-cinza" id="ote-flag-valor"><span class="dot"></span>0,0×</span>
               </span>
             </div>
             <div class="ix-result-row">
-              <span class="ix-result-label">Bandeira de clientes</span>
-              <span class="ix-result-value" style="display:flex;align-items:center;gap:8px;">
-                <span id="ote-fator-clientes">1,0</span>
-                <span class="ix-flag ix-flag-verde" id="ote-flag-clientes"><span class="dot"></span>Verde</span>
-              </span>
+              <span class="ix-result-label">Remuneração total no mês (fixo + variável)</span>
+              <span class="ix-result-value big" id="ote-total-mes">R$ 3.000,00</span>
             </div>
-            <div class="ix-result-row">
-              <span class="ix-result-label">Variável mensal</span>
-              <span class="ix-result-value" id="ote-variavel">R$ 2.062,50</span>
+            <div class="ix-result-row" id="ote-comissao-row" style="display:none;">
+              <span class="ix-result-label">Comissão 2% acima de 120% da meta</span>
+              <span class="ix-result-value" style="color:#4cd5a0;" id="ote-comissao">R$ 0,00</span>
             </div>
-            <div class="ix-result-row">
-              <span class="ix-result-label">Remuneração total no mês</span>
-              <span class="ix-result-value big" id="ote-total-mes">R$ 4.562,50</span>
-            </div>
-            <div class="ix-result-row">
-              <span class="ix-result-label">Projeção no trimestre</span>
-              <span class="ix-result-value green" id="ote-total-tri">R$ 13.687,50</span>
-            </div>
+
           </div>
           <div class="ix-progress-block">
             <div class="ix-progress-label">
-              <span>Progresso até o fator máximo (1,5×): volume</span>
-              <span id="ote-prog-valor-txt">66%</span>
+              <span>% atingimento da meta (valor)</span>
+              <span id="ote-prog-valor-txt">85%</span>
             </div>
-            <div class="ix-progress-bar"><i id="ote-prog-valor" style="width:66%"></i></div>
-          </div>
-          <div class="ix-progress-block" style="margin-top:12px">
-            <div class="ix-progress-label">
-              <span>Progresso até o fator máximo (1,5×): clientes</span>
-              <span id="ote-prog-clientes-txt">83%</span>
-            </div>
-            <div class="ix-progress-bar"><i id="ote-prog-clientes" style="width:83%"></i></div>
+            <div class="ix-progress-bar"><i id="ote-prog-valor" style="width:70%"></i></div>
           </div>
         </div>
       </div>
@@ -767,84 +1190,124 @@
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   componentDidMount() {
+    var dotColors = ['#97a2b5','#e8614f','#e09b20','#1fba7f','#5994f5'];
+    var carousel = document.getElementById('ote-carousel');
+    var dots = document.querySelectorAll('.ote-dot');
+    var current = 0;
+    var total = 5;
+
+    function goTo(idx) {
+      current = (idx + total) % total;
+      var slideWidth = carousel.querySelector('.ote-carousel-slide').offsetWidth;
+      carousel.style.transition = 'transform 0.4s cubic-bezier(.4,0,.2,1)';
+      carousel.style.transform = 'translateX(-' + (current * slideWidth) + 'px)';
+      dots.forEach(function(d, i) {
+        d.style.background = i === current ? dotColors[i] : '#b0b8cc';
+        d.style.transform = i === current ? 'scale(1.3)' : 'scale(1)';
+      });
+    }
+
+dots.forEach(function(d) { d.addEventListener('click', function() { goTo(parseInt(d.dataset.idx)); }); });
+
+    // Venda realizada editável ao clicar
+    var vendasDisp = document.getElementById('ote-vendas-disp');
+    var vendasRange = document.getElementById('ote-vendas');
+    var exactVendasVal = 27850;
+    vendasDisp.addEventListener('click', function() {
+      var currentVal = exactVendasVal;
+      var input = document.createElement('input');
+      input.type = 'number';
+      input.value = currentVal;
+      input.min = 0;
+      input.step = 1;
+      input.style.cssText = 'width:110px;font-size:inherit;font-weight:700;color:#5994f5;background:transparent;border:none;border-bottom:2px solid #5994f5;outline:none;text-align:right;';
+      vendasDisp.replaceWith(input);
+      input.select();
+      function commitVenda() {
+        var val = parseInt(input.value, 10);
+        if (isNaN(val) || val < 0) val = currentVal;
+        exactVendasVal = val;
+        vendasRange.max = Math.max(parseInt(vendasRange.max), val);
+        vendasRange.value = val;
+        input.replaceWith(vendasDisp);
+        window.ixCalcOte();
+      }
+      input.addEventListener('blur', commitVenda);
+      input.addEventListener('keydown', function(e) { if (e.key === 'Enter') input.blur(); });
+    });
+
     function fmtBRL(v) {
       return v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     }
 
-    function fatorPorFaixas(valor, faixas) {
-      var fator = 0;
-      for (var i = 0; i < faixas.length; i++) {
-        if (valor >= faixas[i].min) fator = faixas[i].fator;
-      }
-      return fator;
+    // Nível 1: OTE = R$ 5.000 | Meta de valor (100%) = R$ 31.100
+    var META1_TARGET = 31100;
+    var VARIAVEL_MAX = 2500;
+
+    function fatorPorPct(pct) {
+      if (pct >= 1.20) return 1.5;
+      if (pct >= 1.00) return 1.0;
+      if (pct >= 0.86) return 0.7;
+      if (pct >= 0.70) return 0.5;
+      return 0;
     }
 
-    var FAIXAS_VALOR = [
-      { min: 20000, fator: 0.5 },
-      { min: 30000, fator: 0.7 },
-      { min: 40000, fator: 1.0 },
-      { min: 50000, fator: 1.5 }
-    ];
-    var FAIXAS_CLIENTES = [
-      { min: 5,  fator: 0.5 },
-      { min: 7,  fator: 0.7 },
-      { min: 10, fator: 1.0 },
-      { min: 12, fator: 1.5 }
-    ];
-
-    function bandeiraPorFator(fator) {
-      if (fator >= 1.5) return { cls: 'ix-flag ix-flag-verde', label: 'Verde' };
-      if (fator >= 1.0) return { cls: 'ix-flag ix-flag-verde', label: 'Verde' };
-      if (fator >= 0.7) return { cls: 'ix-flag ix-flag-amarela', label: 'Amarela' };
-      if (fator >= 0.5) return { cls: 'ix-flag ix-flag-vermelha', label: 'Vermelha' };
-      return { cls: 'ix-flag ix-flag-cinza', label: 'Sem bandeira' };
+    function labelPorFator(f) {
+      if (f >= 1.5) return { cls: 'ix-flag ix-flag-verde',    label: '1,5×' };
+      if (f >= 1.0) return { cls: 'ix-flag ix-flag-verde',    label: '1,0×' };
+      if (f >= 0.7) return { cls: 'ix-flag ix-flag-amarela',  label: '0,7×' };
+      if (f >= 0.5) return { cls: 'ix-flag ix-flag-vermelha', label: '0,5×' };
+      return          { cls: 'ix-flag ix-flag-cinza',          label: '0,0×' };
     }
 
-    function aplicaBandeira(elId, fator) {
+    function aplicaFlag(elId, fator) {
       var el = document.getElementById(elId);
       if (!el) return;
-      var b = bandeiraPorFator(fator);
+      var b = labelPorFator(fator);
       el.className = b.cls;
       el.innerHTML = '<span class="dot"></span>' + b.label;
     }
 
     window.ixCalcOte = function() {
-      var vendas   = parseInt(document.getElementById('ote-vendas').value, 10);
-      var clientes = parseInt(document.getElementById('ote-clientes').value, 10);
-      document.getElementById('ote-vendas-disp').textContent   = fmtBRL(vendas);
-      document.getElementById('ote-clientes-disp').textContent = clientes;
+      var vendas = exactVendasVal !== undefined ? exactVendasVal : parseInt(document.getElementById('ote-vendas').value, 10);
 
-      var fatorValor    = fatorPorFaixas(vendas, FAIXAS_VALOR);
-      var fatorClientes = fatorPorFaixas(clientes, FAIXAS_CLIENTES);
-      var VARIAVEL_MAX  = 3750;
-      var variavel  = VARIAVEL_MAX * (0.5 * fatorValor + 0.5 * fatorClientes);
-      var totalMes  = 2500 + variavel;
-      var totalTri  = totalMes * 3;
+      document.getElementById('ote-vendas-disp').textContent = fmtBRL(vendas);
 
-      document.getElementById('ote-fator-valor').textContent    = fatorValor.toFixed(1).replace('.', ',');
-      document.getElementById('ote-fator-clientes').textContent = fatorClientes.toFixed(1).replace('.', ',');
-      aplicaBandeira('ote-flag-valor', fatorValor);
-      aplicaBandeira('ote-flag-clientes', fatorClientes);
-      document.getElementById('ote-variavel').textContent  = fmtBRL(variavel);
+      var pct1 = vendas / META1_TARGET;
+      var f1   = fatorPorPct(pct1);
+
+      var variavel = VARIAVEL_MAX * f1;
+      var limiar120 = META1_TARGET * 1.20;
+      var comissao = vendas > limiar120 ? Math.round((vendas - limiar120) * 0.02) : 0;
+      var totalMes = 2500 + variavel + comissao;
+
+      document.getElementById('ote-pct-valor').textContent = Math.round(pct1 * 100) + '%';
+      aplicaFlag('ote-flag-valor', f1);
+
       document.getElementById('ote-total-mes').textContent = fmtBRL(totalMes);
-      document.getElementById('ote-total-tri').textContent = fmtBRL(totalTri);
 
-      var progValor    = Math.min(100, (vendas / 50000) * 100);
-      var progClientes = Math.min(100, (clientes / 12) * 100);
-      document.getElementById('ote-prog-valor').style.width        = progValor + '%';
-      document.getElementById('ote-prog-valor-txt').textContent    = Math.round(progValor) + '%';
-      document.getElementById('ote-prog-clientes').style.width     = progClientes + '%';
-      document.getElementById('ote-prog-clientes-txt').textContent = Math.round(progClientes) + '%';
+      var comissaoRow = document.getElementById('ote-comissao-row');
+      if (comissao > 0) {
+        comissaoRow.style.display = '';
+        document.getElementById('ote-comissao').textContent = '+ ' + fmtBRL(comissao);
+      } else {
+        comissaoRow.style.display = 'none';
+      }
+
+      var progValor = Math.min(100, (pct1 / 1.2) * 100);
+      document.getElementById('ote-prog-valor').style.width     = progValor + '%';
+      document.getElementById('ote-prog-valor-txt').textContent = Math.round(pct1 * 100) + '%';
     };
 
-    // Valores iniciais
-    document.getElementById('ote-vendas').value   = 33000;
-    document.getElementById('ote-clientes').value = 10;
+    document.getElementById('ote-vendas').value = 27850;
+    exactVendasVal = 27850;
 
     window.ixCalcOte();
 
-    document.getElementById('ote-vendas').addEventListener('input', window.ixCalcOte);
-    document.getElementById('ote-clientes').addEventListener('input', window.ixCalcOte);
+    document.getElementById('ote-vendas').addEventListener('input', function() {
+      exactVendasVal = parseInt(this.value, 10);
+      window.ixCalcOte();
+    });
   }
 }
 </script>
