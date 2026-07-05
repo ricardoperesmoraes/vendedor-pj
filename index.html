@@ -362,6 +362,8 @@
     .ote-sl-card tbody td.meta { text-align:right; color:rgba(255,255,255,0.4); font-size:15px; font-style:italic; }
     .ote-sl-card tbody td.venda { text-align:right; color:rgba(255,255,255,0.65); font-size:14px; }
     .ote-sl-foot { display:flex; align-items:center; justify-content:space-between; }
+    .ote-sl-logo { font-family:var(--font-display); font-size:12px; font-weight:600; color:rgba(255,255,255,0.3); letter-spacing:0.08em; text-transform:uppercase; }
+    .ote-sl-pg   { font-size:12px; color:rgba(255,255,255,0.25); font-family:var(--font-display); letter-spacing:0.06em; }
     .ote-modal-overlay {
       display:none; position:fixed; inset:0; z-index:200;
       background:rgba(10,14,30,0.92); backdrop-filter:blur(8px);
@@ -416,9 +418,12 @@
       .ix-ote { padding: 48px 0; }
       .ix-ote-layout { grid-template-columns: 1fr; gap: 32px; }
       .ix-ote-text h2 { font-size: 24px; }
-      .ix-ote-table { overflow-x: auto; }
+
+      /* Tables - scroll horizontal */
+      .ix-ote-table { overflow-x: auto; -webkit-overflow-scrolling: touch; }
       .ix-ote-table table { min-width: 480px; }
       .ix-remuner-box { padding: 20px 16px; }
+      .ix-remuner-row { flex-wrap: wrap; gap: 4px; }
 
       /* Provide */
       .ix-provide { padding: 48px 0; }
@@ -436,11 +441,17 @@
       /* Calc */
       .ix-calc { padding: 48px 0; }
       .ix-calc-grid { grid-template-columns: 1fr !important; }
+      .ix-calc-box { padding: 24px 16px !important; }
 
       /* Carousel slides */
       .ote-slide { padding: 20px 16px; }
       .ote-sl-title { font-size: 24px !important; }
       .ote-sl-sub { font-size: 13px !important; }
+      .ote-sl-card { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.3) transparent; }
+      .ote-sl-card::-webkit-scrollbar { height: 4px; }
+      .ote-sl-card::-webkit-scrollbar-track { background: transparent; }
+      .ote-sl-card::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 2px; }
+      .ote-sl-card table { min-width: 560px; }
 
       /* Footer CTA */
       .ix-footer-cta { padding: 48px 16px !important; }
@@ -1208,6 +1219,17 @@ class Component extends DCLogic {
     }
 
 dots.forEach(function(d) { d.addEventListener('click', function() { goTo(parseInt(d.dataset.idx)); }); });
+
+    // Touch swipe no carrossel
+    var touchStartX = 0;
+    var carouselEl = document.getElementById('ote-carousel');
+    carouselEl.addEventListener('touchstart', function(e) {
+      touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+    carouselEl.addEventListener('touchend', function(e) {
+      var diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
+    }, { passive: true });
 
     // Venda realizada editável ao clicar
     var vendasDisp = document.getElementById('ote-vendas-disp');
