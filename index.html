@@ -413,7 +413,7 @@
       /* Hero */
       .ix-hero { padding: 48px 0 0; }
       .ix-hero-inner { grid-template-columns: 1fr; gap: 32px; }
-      .ix-hero h1 { font-size: 30px; }
+      .ix-hero h1 { font-size: 30px; word-break: break-word; }
       .ix-hero p.lead { font-size: 15px; }
       .ix-hero-img { height: 260px; }
       .ix-hero-text { padding-bottom: 0; }
@@ -435,11 +435,13 @@
       /* OTE */
       .ix-ote { padding: 48px 0; }
       .ix-ote-layout { grid-template-columns: 1fr; gap: 32px; }
-      .ix-ote-text h2 { font-size: 24px; }
-      .ix-remuner-box { padding: 20px 16px; }
-      .ix-remuner-row { flex-wrap: wrap; gap: 4px; }
-      .ix-remuner-value { font-size: 15px !important; }
-      .ix-remuner-value.accent, .ix-remuner-value.total { font-size: 18px !important; }
+      .ix-ote-text h2 { font-size: 22px; word-break: break-word; }
+      .ix-remuner-box { padding: 16px; width: 100%; }
+      .ix-remuner-row { gap: 8px; }
+      .ix-remuner-label { font-size: 13px; flex: 1; min-width: 0; }
+      .ix-remuner-value { font-size: 14px !important; text-align: right; white-space: nowrap; }
+      .ix-remuner-value.accent { font-size: 16px !important; }
+      .ix-remuner-value.total  { font-size: 16px !important; }
 
       /* Tables - scroll horizontal */
       .ix-ote-table { overflow-x: auto; -webkit-overflow-scrolling: touch; }
